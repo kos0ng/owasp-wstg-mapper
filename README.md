@@ -47,6 +47,14 @@ docker run -d -p 3000:3000 --platform linux/amd64 bkimminich/juice-shop
 http://localhost:3000
 ```
 
+### Work Flow
+- Run burpsuite
+- Access features available on Juice Shop
+- Extract the HTTP/HTTPS history on burp
+- Run mapper.py
+- Open excel report
+- Do penetration testing and use excel report as tracker and reference
+
 ## Question
 - [ ] Severity dalam bentuk warna atau kolom?
 
