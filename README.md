@@ -8,8 +8,16 @@ pip install -r requirements.txt
 
 ## Launch apps
 
+### Show Help
+
 ```bash
-python3 mapper.py
+python3 mapper.py -h
+```
+
+### Filter target
+
+```bash
+python3 mapper.py -f export.json -u 192.168.1.4
 ```
 
 ## Todo List
@@ -33,6 +41,12 @@ python3 mapper.py
 - Notes
 
 ## Testing
+
+### Specification
+- OWASP Juice Shop v14.5.1
+- Burpsuite Community Edition v2023.3.5
+- Python v3.10.0
+- Firefox v112.0.2
 
 ### Run Juice Shop on Docker
 
