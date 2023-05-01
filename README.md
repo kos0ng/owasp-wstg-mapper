@@ -8,7 +8,7 @@ pip install -r requirements.txt
 
 ## How to Use
 
-### Show Help
+### Show help
 
 ```bash
 python3 mapper.py -h
@@ -17,13 +17,13 @@ python3 mapper.py -h
 ### Filter target
 
 ```bash
-python3 mapper.py -f export.json -u 192.168.1.4
+python3 mapper.py -f export.xml -u 192.168.1.4
 ```
 
 ### Custom output name
 
 ```bash
-python3 mapper.py -f export.json -o threat_model_target.xlsx
+python3 mapper.py -f export.xml -o threat_model_target.xlsx
 ```
 
 ## Todo List
@@ -35,6 +35,10 @@ python3 mapper.py -f export.json -o threat_model_target.xlsx
 - [ ] Mapping pengujian
 - [ ] Urutkan berdasarkan kebanyakan severity
 - [ ] Bikin report dalam excel
+
+## Features
+- Filter based on host
+- Filter based on endpoint
 
 ## Excel Report
 
