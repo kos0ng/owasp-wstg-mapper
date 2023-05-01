@@ -32,5 +32,21 @@ python3 mapper.py
 - Result
 - Notes
 
+## Testing
+
+### Run Juice Shop on Docker
+
+```bash
+# Download latest juice shop image
+docker pull --platform linux/amd64 bkimminich/juice-shop
+
+# Run the image on port 3000
+docker run -d -p 3000:3000 --platform linux/amd64 bkimminich/juice-shop
+
+# Access the juice shop
+http://localhost:3000
+```
+
 ## Question
 - [ ] Severity dalam bentuk warna atau kolom?
+
