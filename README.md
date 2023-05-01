@@ -6,7 +6,7 @@
 pip install -r requirements.txt
 ```
 
-## Launch apps
+## How to Use
 
 ### Show Help
 
@@ -18,6 +18,12 @@ python3 mapper.py -h
 
 ```bash
 python3 mapper.py -f export.json -u 192.168.1.4
+```
+
+### Custom output name
+
+```bash
+python3 mapper.py -f export.json -o threat_model_target.xlsx
 ```
 
 ## Todo List
