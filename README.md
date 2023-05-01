@@ -27,9 +27,9 @@ python3 mapper.py -f export.xml -o threat_model_target.xlsx
 ```
 
 ## Todo List
-- [ ] Deploy juice shop
-- [ ] Akses fitur juice shop
-- [ ] Export burp
+- [X] Deploy juice shop
+- [X] Akses fitur juice shop
+- [X] Export burp
 - [ ] Parsing hasil export burp
 - [ ] Standardisasi daftar pengujian dan ciri-cirinya
 - [ ] Mapping pengujian
