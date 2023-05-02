@@ -30,7 +30,7 @@ python3 mapper.py -f export.xml -o threat_model_target.xlsx
 - [X] Deploy juice shop
 - [X] Akses fitur juice shop
 - [X] Export burp
-- [ ] Parsing hasil export burp
+- [X] Parsing hasil export burp
 - [ ] Standardisasi daftar pengujian dan ciri-cirinya
 - [ ] Mapping pengujian
 - [ ] Urutkan berdasarkan kebanyakan severity
