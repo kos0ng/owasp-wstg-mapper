@@ -1,46 +1,31 @@
-import xml.etree.ElementTree as ET
-import argparse
-import base64
+import json
+import re
+from export import *
 
-def normalizeURL(url):
+def check(key, data, jsonData):
+	for i in jsonData:
+		tmp = jsonData[i]['test']
+		for j in tmp:
+			for k in tmp[j]['regex']:
+				x = re.search(k, data)
+				if(x is not None):
+					jsonData[i]['target'].append(key)
+					break
+			for k in tmp[j]['basic']:
+				if(k in data):
+					jsonData[i]['target'].append(key)
+					break
+	return jsonData
+
+def mapper(data):
 	
-	tmp = url.split("://")
-	protocol = tmp[0]
-	endpoint = tmp[1]
-	endpoint = endpoint.replace("//","/")
+	f = open("data/wstg.json","r").read()
+	jsonData = json.loads(f)
 	
-	return f"{protocol}://{endpoint}"
+	for i in data:
+		jsonData = check(i, data[i]['request']['header'],jsonData)
+		jsonData = check(i, data[i]['request']['body'],jsonData)
+		jsonData = check(i, data[i]['response']['header'],jsonData)
+		jsonData = check(i, data[i]['response']['body'],jsonData)
 
-def parseXML(xmlFile):
-  
-    data = {}
-    tree = ET.parse(xmlFile)
-    root = tree.getroot()
-    
-    for item in root:
-    	url = item.find('url').text
-    	method = item.find('method').text
-    	request = item.find('request').text
-    	response = item.find('response').text
-
-    	url = normalizeURL(url)
-    	request = base64.b64decode(request)
-    	response = base64.b64decode(response)
-    	
-    	key = f"{method} {url}"
-    	data[key] = {}
-    	data[key]['request'] = request.decode()
-    	data[key]['response'] = response.decode()
-    	
-    return data
-
-def parseHTTP():
-	return True
-
-if __name__ == "__main__":
-	
-	parser = argparse.ArgumentParser(description='Mapper description')
-	parser.add_argument("-f", "--filename", type=str)
-	args = parser.parse_args()
-
-	data = parseXML(args.filename)
+	export(jsonData)

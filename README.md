@@ -36,6 +36,12 @@ python3 mapper.py -f export.xml -o threat_model_target.xlsx
 - [ ] Urutkan berdasarkan kebanyakan severity
 - [ ] Bikin report dalam excel
 
+## Idea
+- [ ] Check only suspicious header and body (filter header)
+- [ ] Research about regex
+- [ ] Basic search valid , not "invalid" match with "id"
+- [ ] Custom output name
+
 ## Features
 - Filter based on host
 - Filter based on endpoint
