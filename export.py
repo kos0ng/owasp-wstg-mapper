@@ -1,6 +1,12 @@
 import xlsxwriter
 from datetime import datetime
 
+def template(worksheet):
+	worksheet.write('A1', 'Hello..')
+	worksheet.write('B1', 'Geeks')
+	worksheet.write('C1', 'For')
+	worksheet.write('D1', 'Geeks')
+
 def export(jsonData):
 	now = datetime.now()
 	# fileName = now.strftime("%Y_%m_%d_%H_%M_%S.xlsx")
@@ -10,9 +16,6 @@ def export(jsonData):
 	workbook = xlsxwriter.Workbook(filePath)
 	worksheet = workbook.add_worksheet()
 
-	# worksheet.write('A1', 'Hello..')
-	# worksheet.write('B1', 'Geeks')
-	# worksheet.write('C1', 'For')
-	# worksheet.write('D1', 'Geeks')
+	template(worksheet)
 
 	workbook.close()
