@@ -41,6 +41,11 @@ python3 mapper.py -f export.xml -o threat_model_target.xlsx
 - [ ] Research about regex
 - [ ] Basic search valid , not "invalid" match with "id"
 - [ ] Custom output name
+- [ ] Two type
+	- [ ] Simple , row per endpoint in one test case
+	- [ ] Normal
+- [ ] Level, only exploitation or include enumeration process
+- [ ] Category, web, infra?
 
 ## Features
 - Filter based on host
