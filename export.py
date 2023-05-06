@@ -1,15 +1,16 @@
 import xlsxwriter
 from datetime import datetime
+import json
 
-def template(workbook):
+def template(workbook, jsonData):
 	
+	fileTemplate = open("data/template_wstg.json","r").read()
+	jsonTestCase = json.loads(fileTemplate)
+
 	worksheet = workbook.add_worksheet()
 	
 	title = workbook.add_format({'bold': True})
 	title.set_font_size(14)
-
-	# bigFont = workbook.add_format()
-	# bigFont.set_font_size(10)
 
 	worksheet.set_column(0, 0, 25)
 	worksheet.set_column(1, 1, 50)
@@ -21,7 +22,7 @@ def template(workbook):
 
 	worksheet.set_row(5, 25) 
 
-	merge_format = workbook.add_format(
+	mergeFormat = workbook.add_format(
     	{
         	"align": "center",
         	"valign": "vcenter",
@@ -35,6 +36,7 @@ def template(workbook):
 			"bg_color": "#F97B22",
 			"border": 1,
 			"valign": "vcenter",
+			"text_wrap": True,
 		}
 	)
 
@@ -47,7 +49,7 @@ def template(workbook):
 		}
 	)
 
-	bg_red = workbook.add_format(
+	bgRed = workbook.add_format(
 		{
 			"bold": True,
 			"align": "center",
@@ -58,7 +60,7 @@ def template(workbook):
 		}
 	)
 
-	bg_green = workbook.add_format(
+	bgGreen = workbook.add_format(
 		{
 			"bold": True,
 			"align": "center",
@@ -68,68 +70,73 @@ def template(workbook):
 		}
 	)
 
-	worksheet.merge_range("A1:F1", "Merged Range", merge_format)
-
 	worksheet.write('A1', 'OWASP: Testing Guide v4.2 Checklist', title)
 	
 	worksheet.write('A3', 'Target Name : ')
 	worksheet.write('A4', 'Pentester Name : ')
 
-	# header
-	worksheet.write('A6', 'Information Gathering', header)
-	worksheet.write('B6', 'Test Name', header)
-	worksheet.write('C6', 'Objectives', header)
-	worksheet.write('D6', 'Endpoint', header)
-	worksheet.write('E6', 'Result', header)
-	worksheet.write('F6', 'Screenshot', header)
-	worksheet.write('G6', 'Notes', header)
+	start = 6
+	for testCase in jsonTestCase:
+		
+		# header
+		worksheet.write(f'A{start}', testCase['header'], header)
+		worksheet.write(f'B{start}', 'Test Name', header)
+		worksheet.write(f'C{start}', 'Objectives', header)
+		worksheet.write(f'D{start}', 'Endpoint', header)
+		worksheet.write(f'E{start}', 'Result', header)
+		worksheet.write(f'F{start}', 'Screenshot', header)
+		worksheet.write(f'G{start}', 'Notes', header)
+		start += 1
+		end = start
 
-	# body
-	worksheet.write('A7','WSTG-INFO-01', body)
-	worksheet.write('B7','Conduct Search Engine Discovery Reconnaissance for Information Leakage', body)
-	worksheet.write('C7','- Identify what sensitive design and configuration information of the application, system, or organization is exposed directly (on the organization\'s website) or indirectly (via third-party services).', body)
-	worksheet.write('D7','https://google.com/a', body)
-	#worksheet.data_validation('B2:B'+str(1+n_rows), {'validate' : 'list', 'source': ['a', 'b']})
+		# body
+		for bodyTest in testCase['body']:
+			if(bodyTest in jsonData):
+				listEndpoint = jsonData[bodyTest]['target']
+				for endpoint in listEndpoint:
+					worksheet.write(f'D{end}',endpoint, body)
+					worksheet.write(f'E{end}','', body)
+					end += 1
+				worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, body)
+				worksheet.merge_range(f"B{start}:B{end-1}", testCase['body'][bodyTest]['name'], body)
+				worksheet.merge_range(f"C{start}:C{end-1}", testCase['body'][bodyTest]['objectives'], body)
+				worksheet.merge_range(f"F{start}:F{end-1}", '', body)
+				worksheet.merge_range(f"G{start}:G{end-1}", '', body)
+			else:
+				worksheet.write(f'A{end}', bodyTest, body)
+				worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
+				worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
+				worksheet.write(f'D{end}', '', body)
+				worksheet.write(f'E{end}', '', body)
+				worksheet.write(f'F{end}', '', body)
+				worksheet.write(f'G{end}', '', body)
+				end += 1
+			start = end
+			
+		end += 1
+		start = end
+
 	
-	worksheet.conditional_format('E7:E100', {'type': 'cell',
+	worksheet.conditional_format(f'E7:E{end-2}', {'type': 'cell',
                                         'criteria': '==',
                                         'value':    '"VULN"',
-                                        'format':   bg_red})
-	worksheet.conditional_format('E7:E100', {'type': 'cell',
+                                        'format':   bgRed})
+	worksheet.conditional_format(f'E7:E{end-2}', {'type': 'cell',
                                         'criteria': '==',
                                         'value':    '"PASSED"',
-                                        'format':   bg_green})
-	worksheet.data_validation('E7:E10', {'validate' : 'list', 'source': ['PASSED', 'VULN']})
-
-	worksheet.write('E7','', body)
-	
-	worksheet.write('F7','', body)
-	worksheet.write('G7','', body)
-
-
-	# worksheet.write('E8','', body)
-
-	# worksheet.merge_range("A7:A8", "Merged Range", merge_format)
-
-	
-	
-
-
-
-
-
+                                        'format':   bgGreen})
+	worksheet.data_validation(f'E7:E{end-2}', {'validate' : 'list', 'source': ['PASSED', 'VULN']})
 	
 
 	return worksheet
 
 def export(jsonData):
 	now = datetime.now()
-	# fileName = now.strftime("%Y_%m_%d_%H_%M_%S.xlsx")
-	fileName = "coba.xlsx"
+	fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
 	filePath = f"report/{fileName}"
 
 	workbook = xlsxwriter.Workbook(filePath)
 
-	worksheet = template(workbook)
+	worksheet = template(workbook, jsonData)
 
 	workbook.close()
