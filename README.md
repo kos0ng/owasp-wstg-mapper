@@ -42,12 +42,13 @@ python3 mapper.py -f export.xml -o threat_model_target.xlsx
 - [ ] Basic search valid , not "invalid" match with "id"
 - [ ] Custom output name
 - [ ] Two type (different parsing mechanism)
-	- [ ] Simple , row per endpoint in one test case, 
+	- [X] Simple , row per endpoint in one test case, 
 	- [ ] Normal
 - [ ] Level, only exploitation or include enumeration process
 - [ ] Write all test case in excel or no?
 - [ ] Category, web, infra?
 - [ ] set design excel (row height)
+- [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing
 
 ## Features
 - Filter based on host
