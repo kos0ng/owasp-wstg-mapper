@@ -26,6 +26,17 @@ python3 main.py -f export.xml -u 192.168.1.4
 python3 main.py -f export.xml -o threat_model_target.xlsx
 ```
 
+### Set level output
+
+| Level      | Description |
+| ----------- | ----------- |
+| 1      |  Without Enumeration Test Case (WSTG-INFO and WSTG-CONF)      |
+| 2   | All Test Case        |
+
+```bash
+python3 main.py -f export.xml -l 1
+```
+
 ## Todo List
 - [X] Deploy juice shop
 - [X] Akses fitur juice shop
