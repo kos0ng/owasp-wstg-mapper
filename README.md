@@ -42,7 +42,6 @@ python3 main.py -f export.xml -o threat_model_target.xlsx
 - [ ] Check only suspicious header and body (filter header)
 - [ ] Research about regex
 - [ ] Basic search valid , not "invalid" match with "id"
-- [ ] Custom output name
 - [ ] Two type (different parsing mechanism)
 	- [X] Simple , row per endpoint in one test case, 
 	- [ ] Normal
