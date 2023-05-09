@@ -31,7 +31,7 @@ python3 main.py -f export.xml -o threat_model_target.xlsx
 | Level      | Description |
 | ----------- | ----------- |
 | 1      |  Without Enumeration Test Case (WSTG-INFO and WSTG-CONF)      |
-| 2 (Default)  | All Test Case        |
+| 2 (default)  | All Test Case        |
 
 ```bash
 python3 main.py -f export.xml -l 1
