@@ -1,17 +1,14 @@
 {
 	"WSTG-INPV-05" : {
-		"name" : "Testing for SQL Injection",
 		"test" : {
 			"request" : {
 				"regex" : [".*\\?=.*"],
 				"basic" : ["id","username"]
 			}
 		},
-		"severity" : "",
 		"target" : []
 	},
 	"WSTG-ATHZ-04" : {
-		"name" : "Testing for Insecure Direct Object References",
 		"test" : {
 			"request" : {
 				"regex" : [],

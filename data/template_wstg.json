@@ -4,43 +4,53 @@
 		"body" : {
 			"WSTG-INFO-01" : {
 				"name" : "Conduct Search Engine Discovery Reconnaissance for Information Leakage",
-				"objectives" : "- Identify what sensitive design and configuration information of the application, system, or organization is exposed directly (on the organization's site) or indirectly (via third-party services)."
+				"objectives" : "- Identify what sensitive design and configuration information of the application, system, or organization is exposed directly (on the organization's site) or indirectly (via third-party services).",
+				"severity" : 1
 			},
 			"WSTG-INFO-02" : {
 				"name" : "Fingerprint Web Server",
-				"objectives" : "- Determine the version and type of a running web server to enable further discovery of any known vulnerabilities."
+				"objectives" : "- Determine the version and type of a running web server to enable further discovery of any known vulnerabilities.",
+				"severity" : 1
 			},
 			"WSTG-INFO-03" : {
 				"name" : "Review Webserver Metafiles for Information Leakage",
-				"objectives" : "- Identify hidden or obfuscated paths and functionality through the analysis of metadata files.- Extract and map other information that could lead to a better understanding of the systems at hand."
+				"objectives" : "- Identify hidden or obfuscated paths and functionality through the analysis of metadata files.- Extract and map other information that could lead to a better understanding of the systems at hand.",
+				"severity" : 1
 			},
 			"WSTG-INFO-04" : {
 				"name" : "Enumerate Applications on Webserver",
-				"objectives" : "- Enumerate the applications within the scope that exist on a web server."
+				"objectives" : "- Enumerate the applications within the scope that exist on a web server.",
+				"severity" : 1
 			},
 			"WSTG-INFO-05" : {
 				"name" : "Review Webpage Content for Information Leakage",
-				"objectives" : "- Enumerate the applications within the scope that exist on a web server."
+				"objectives" : "- Enumerate the applications within the scope that exist on a web server.",
+				"severity" : 1
 			},
 			"WSTG-INFO-06" : {
 				"name" : "Identify Application Entry Points",
-				"objectives" : "- Identify possible entry and injection points through request and response analysis."
+				"objectives" : "- Identify possible entry and injection points through request and response analysis.",
+				"severity" : 1
 			},
 			"WSTG-INFO-07" : {
 				"name" : "Map Execution Paths Through Application",
-				"objectives" : "- Map the target application and understand the principal workflows."
+				"objectives" : "- Map the target application and understand the principal workflows.",
+				"severity" : 1
 			},
 			"WSTG-INFO-08" : {
 				"name" : "Fingerprint Web Application Framework",
-				"objectives" : "- Fingerprint the components being used by the web applications."
+				"objectives" : "- Fingerprint the components being used by the web applications.",
+				"severity" : 1
 			},
 			"WSTG-INFO-09" : {
 				"name" : "Fingerprint Web Application",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			},
 			"WSTG-INFO-10" : {
 				"name" : "Map Application Architecture",
-				"objectives" : "- Understand the architecture of the application and the technologies in use."
+				"objectives" : "- Understand the architecture of the application and the technologies in use.",
+				"severity" : 1
 			}
 		}
 	},
@@ -49,56 +59,69 @@
 		"body" : {
 			"WSTG-CONF-01" : {
 				"name" : "Test Network Infrastructure Configuration",
-				"objectives" : "- Review the applications' configurations set across the network and validate that they are not vulnerable.- Validate that used frameworks and systems are secure and not susceptible to known vulnerabilities due to unmaintained software or default settings and credentials."
+				"objectives" : "- Review the applications' configurations set across the network and validate that they are not vulnerable.- Validate that used frameworks and systems are secure and not susceptible to known vulnerabilities due to unmaintained software or default settings and credentials.",
+				"severity" : 1
 			},
 			"WSTG-CONF-02" : {
 				"name" : "Test Application Platform Configuration",
-				"objectives" : "- Ensure that defaults and known files have been removed.- Validate that no debugging code or extensions are left in the production environments.- Review the logging mechanisms set in place for the application."
+				"objectives" : "- Ensure that defaults and known files have been removed.- Validate that no debugging code or extensions are left in the production environments.- Review the logging mechanisms set in place for the application.",
+				"severity" : 1
 			},
 			"WSTG-CONF-03" : {
 				"name" : "Test File Extensions Handling for Sensitive Information",
-				"objectives" : "- Dirbust sensitive file extensions, or extensions that might contain raw data (*e.g.* scripts, raw data, credentials, etc.).- Validate that no system framework bypasses exist on the rules set."
+				"objectives" : "- Dirbust sensitive file extensions, or extensions that might contain raw data (*e.g.* scripts, raw data, credentials, etc.).- Validate that no system framework bypasses exist on the rules set.",
+				"severity" : 1
 
 			},
 			"WSTG-CONF-04" : {
 				"name" : "Review Old Backup and Unreferenced Files for Sensitive Information",
-				"objectives" : "- Find and analyse unreferenced files that might contain sensitive information."
+				"objectives" : "- Find and analyse unreferenced files that might contain sensitive information.",
+				"severity" : 1
 			},
 			"WSTG-CONF-05" : {
 				"name" : "Enumerate Infrastructure and Application Admin Interfaces",
-				"objectives" : "- Identify hidden administrator interfaces and functionality."
+				"objectives" : "- Identify hidden administrator interfaces and functionality.",
+				"severity" : 1
 			},
 			"WSTG-CONF-06" : {
 				"name" : "Test HTTP Methods",
-				"objectives" : "- Enumerate supported HTTP methods.- Test for access control bypass.- Test HTTP method overriding techniques."
+				"objectives" : "- Enumerate supported HTTP methods.- Test for access control bypass.- Test HTTP method overriding techniques.",
+				"severity" : 1
 			},
 			"WSTG-CONF-07" : {
 				"name" : "Test HTTP Strict Transport Security",
-				"objectives" : "- Review the HSTS header and its validity."
+				"objectives" : "- Review the HSTS header and its validity.",
+				"severity" : 1
 			},
 			"WSTG-CONF-08" : {
 				"name" : "Test RIA Cross Domain Policy",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			},
 			"WSTG-CONF-09" : {
 				"name" : "Test File Permission",
-				"objectives" : "- Review and identify any rogue file permissions."
+				"objectives" : "- Review and identify any rogue file permissions.",
+				"severity" : 1
 			},
 			"WSTG-CONF-10" : {
 				"name" : "Test for Subdomain Takeover",
-				"objectives" : "- Enumerate all possible domains (previous and current).- Identify forgotten or misconfigured domains."
+				"objectives" : "- Enumerate all possible domains (previous and current).- Identify forgotten or misconfigured domains.",
+				"severity" : 1
 			},
 			"WSTG-CONF-11" : {
 				"name" : "Test Cloud Storage",
-				"objectives" : "- Assess that the access control configuration for the storage services is properly in place."
+				"objectives" : "- Assess that the access control configuration for the storage services is properly in place.",
+				"severity" : 1
 			},
 			"WSTG-CONF-12" : {
 				"name" : "Testing for Content Security Policy",
-				"objectives" : "- Review the Content-Security-Policy header or meta element to identify misconfigurations."
+				"objectives" : "- Review the Content-Security-Policy header or meta element to identify misconfigurations.",
+				"severity" : 1
 			},
 			"WSTG-CONF-13" : {
 				"name" : "Test Path Confusion",
-				"objectives" : "- Make sure application paths are configured correctly."
+				"objectives" : "- Make sure application paths are configured correctly.",
+				"severity" : 1
 			}
 		}
 	},
@@ -107,23 +130,28 @@
 		"body" : {
 			"WSTG-IDNT-01" : {
 				"name" : "Test Role Definitions",
-				"objectives" : "- Identify and document roles used by the application.- Attempt to switch, change, or access another role.- Review the granularity of the roles and the needs behind the permissions given."
+				"objectives" : "- Identify and document roles used by the application.- Attempt to switch, change, or access another role.- Review the granularity of the roles and the needs behind the permissions given.",
+				"severity" : 1
 			},
 			"WSTG-IDNT-02" : {
 				"name" : "Test User Registration Process",
-				"objectives" : "- Verify that the identity requirements for user registration are aligned with business and security requirements.- Validate the registration process."
+				"objectives" : "- Verify that the identity requirements for user registration are aligned with business and security requirements.- Validate the registration process.",
+				"severity" : 1
 			},
 			"WSTG-IDNT-03" : {
 				"name" : "Test Account Provisioning Process",
-				"objectives" : "- Verify which accounts may provision other accounts and of what type."
+				"objectives" : "- Verify which accounts may provision other accounts and of what type.",
+				"severity" : 1
 			},
 			"WSTG-IDNT-04" : {
 				"name" : "Testing for Account Enumeration and Guessable User Account",
-				"objectives" : "- Review processes that pertain to user identification (*e.g.* registration, login, etc.).- Enumerate users where possible through response analysis."
+				"objectives" : "- Review processes that pertain to user identification (*e.g.* registration, login, etc.).- Enumerate users where possible through response analysis.",
+				"severity" : 1
 			},
 			"WSTG-IDNT-05" : {
 				"name" : "Testing for Weak or Unenforced Username Policy",
-				"objectives" : "- Determine whether a consistent account name structure renders the application vulnerable to account enumeration.- Determine whether the application's error messages permit account enumeration."
+				"objectives" : "- Determine whether a consistent account name structure renders the application vulnerable to account enumeration.- Determine whether the application's error messages permit account enumeration.",
+				"severity" : 1
 			}
 		}
 	},
@@ -132,47 +160,58 @@
 		"body" : {
 			"WSTG-ATHN-01" : {
 				"name" : "Testing for Credentials Transported over an Encrypted Channel",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			},
 			"WSTG-ATHN-02" : {
 				"name" : "Testing for Default Credentials",
-				"objectives" : "- Determine whether the application has any user accounts with default passwords. - Review whether new user accounts are created with weak or predictable passwords."
+				"objectives" : "- Determine whether the application has any user accounts with default passwords. - Review whether new user accounts are created with weak or predictable passwords.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-03" : {
 				"name" : "Testing for Weak Lock Out Mechanism",
-				"objectives" : "- Evaluate the account lockout mechanism's ability to mitigate brute force password guessing.- Evaluate the unlock mechanism's resistance to unauthorized account unlocking."
+				"objectives" : "- Evaluate the account lockout mechanism's ability to mitigate brute force password guessing.- Evaluate the unlock mechanism's resistance to unauthorized account unlocking.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-04" : {
 				"name" : "Testing for Bypassing Authentication Schema",
-				"objectives" : "- Ensure that authentication is applied across all services that require it."
+				"objectives" : "- Ensure that authentication is applied across all services that require it.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-05" : {
 				"name" : "Testing for Vulnerable Remember Password",
-				"objectives" : "- Validate that the generated session is managed securely and do not put the user's credentials in danger."
+				"objectives" : "- Validate that the generated session is managed securely and do not put the user's credentials in danger.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-06" : {
 				"name" : "Testing for Browser Cache Weaknesses",
-				"objectives" : "- Review if the application stores sensitive information on the client-side.- Review if access can occur without authorization."
+				"objectives" : "- Review if the application stores sensitive information on the client-side.- Review if access can occur without authorization.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-07" : {
 				"name" : "Testing for Weak Password Policy",
-				"objectives" : "- Determine the resistance of the application against brute force password guessing using available password dictionaries by evaluating the length, complexity, reuse, and aging requirements of passwords."
+				"objectives" : "- Determine the resistance of the application against brute force password guessing using available password dictionaries by evaluating the length, complexity, reuse, and aging requirements of passwords.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-08" : {
 				"name" : "Testing for Weak Security Question Answer",
-				"objectives" : "- Determine the complexity and how straight-forward the questions are.- Assess possible user answers and brute force capabilities."
+				"objectives" : "- Determine the complexity and how straight-forward the questions are.- Assess possible user answers and brute force capabilities.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-09" : {
 				"name" : "Testing for Weak Password Change or Reset Functionalities",
-				"objectives" : "- Determine whether the password change and reset functionality allows accounts to be compromised."
+				"objectives" : "- Determine whether the password change and reset functionality allows accounts to be compromised.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-10" : {
 				"name" : "Testing for Weaker Authentication in Alternative Channel",
-				"objectives" : "- Identify alternative authentication channels.- Assess the security measures used and if any bypasses exists on the alternative channels."
+				"objectives" : "- Identify alternative authentication channels.- Assess the security measures used and if any bypasses exists on the alternative channels.",
+				"severity" : 1
 			},
 			"WSTG-ATHN-10" : {
 				"name" : "Testing Multi-Factor Authentication (MFA)",
-				"objectives" : "- Identify the type of MFA used by the application.- Determine whether the MFA implementation is robust and secure.- Attempt to bypass the MFA."
+				"objectives" : "- Identify the type of MFA used by the application.- Determine whether the MFA implementation is robust and secure.- Attempt to bypass the MFA.",
+				"severity" : 1
 			}
 		}
 	},
@@ -181,23 +220,28 @@
 		"body" : {
 			"WSTG-ATHZ-01" : {
 				"name" : "Testing Directory Traversal File Include",
-				"objectives" : "- Identify injection points that pertain to path traversal.- Assess bypassing techniques and identify the extent of path traversal."
+				"objectives" : "- Identify injection points that pertain to path traversal.- Assess bypassing techniques and identify the extent of path traversal.",
+				"severity" : 1
 			},
 			"WSTG-ATHZ-02" : {
 				"name" : "Testing for Bypassing Authorization Schema",
-				"objectives" : "- Assess if horizontal or vertical access is possible."
+				"objectives" : "- Assess if horizontal or vertical access is possible.",
+				"severity" : 1
 			},
 			"WSTG-ATHZ-03" : {
 				"name" : "Testing for Privilege Escalation",
-				"objectives" : "- Identify injection points related to privilege manipulation.- Fuzz or otherwise attempt to bypass security measures."
+				"objectives" : "- Identify injection points related to privilege manipulation.- Fuzz or otherwise attempt to bypass security measures.",
+				"severity" : 1
 			},
 			"WSTG-ATHZ-04" : {
 				"name" : "Testing for Insecure Direct Object References",
-				"objectives" : "- Identify points where object references may occur.- Assess the access control measures and if they're vulnerable to IDOR."
+				"objectives" : "- Identify points where object references may occur.- Assess the access control measures and if they're vulnerable to IDOR.",
+				"severity" : 2
 			},
 			"WSTG-ATHZ-05" : {
 				"name" : "Testing for OAuth Weaknesses",
-				"objectives" : "- Determine if OAuth2 implementation is vulnerable or using a deprecated or custom implementation."
+				"objectives" : "- Determine if OAuth2 implementation is vulnerable or using a deprecated or custom implementation.",
+				"severity" : 1
 			}
 		}
 	},
@@ -206,43 +250,53 @@
 		"body" : {
 			"WSTG-SESS-01" : {
 				"name" : "Testing for Session Management Schema",
-				"objectives" : "- Gather session tokens, for the same user and for different users where possible.- Analyze and ensure that enough randomness exists to stop session forging attacks.- Modify cookies that are not signed and contain information that can be manipulated."
+				"objectives" : "- Gather session tokens, for the same user and for different users where possible.- Analyze and ensure that enough randomness exists to stop session forging attacks.- Modify cookies that are not signed and contain information that can be manipulated.",
+				"severity" : 1
 			},
 			"WSTG-SESS-02" : {
 				"name" : "Testing for Cookies Attributes",
-				"objectives" : "- Ensure that the proper security configuration is set for cookies."
+				"objectives" : "- Ensure that the proper security configuration is set for cookies.",
+				"severity" : 1
 			},
 			"WSTG-SESS-03" : {
 				"name" : "Testing for Session Fixation",
-				"objectives" : "- Analyze the authentication mechanism and its flow.- Force cookies and assess the impact."
+				"objectives" : "- Analyze the authentication mechanism and its flow.- Force cookies and assess the impact.",
+				"severity" : 1
 			},
 			"WSTG-SESS-04" : {
 				"name" : "Testing for Exposed Session Variables",
-				"objectives" : "- Ensure that proper encryption is implemented.- Review the caching configuration.- Assess the channel and methods' security."
+				"objectives" : "- Ensure that proper encryption is implemented.- Review the caching configuration.- Assess the channel and methods' security.",
+				"severity" : 1
 			},
 			"WSTG-SESS-05" : {
 				"name" : "Testing for Cross Site Request Forgery",
-				"objectives" : "- Determine whether it is possible to initiate requests on a user's behalf that are not initiated by the user."
+				"objectives" : "- Determine whether it is possible to initiate requests on a user's behalf that are not initiated by the user.",
+				"severity" : 1
 			},
 			"WSTG-SESS-06" : {
 				"name" : "Testing for Logout Functionality",
-				"objectives" : "- Assess the logout UI.- Analyze the session timeout and if the session is properly killed after logout."
+				"objectives" : "- Assess the logout UI.- Analyze the session timeout and if the session is properly killed after logout.",
+				"severity" : 1
 			},
 			"WSTG-SESS-07" : {
 				"name" : "Testing Session Timeout",
-				"objectives" : "- Validate that a hard session timeout exists."
+				"objectives" : "- Validate that a hard session timeout exists.",
+				"severity" : 1
 			},
 			"WSTG-SESS-08" : {
 				"name" : "Testing for Session Puzzling",
-				"objectives" : "- Identify all session variables.- Break the logical flow of session generation."
+				"objectives" : "- Identify all session variables.- Break the logical flow of session generation.",
+				"severity" : 1
 			},
 			"WSTG-SESS-09" : {
 				"name" : "Testing for Session Hijacking",
-				"objectives" : "- Identify vulnerable session cookies.- Hijack vulnerable cookies and assess the risk level."
+				"objectives" : "- Identify vulnerable session cookies.- Hijack vulnerable cookies and assess the risk level.",
+				"severity" : 1
 			},
 			"WSTG-SESS-10" : {
 				"name" : "Testing JSON Web Tokens",
-				"objectives" : "- Determine whether the JWTs expose sensitive information.- Determine whether the JWTs can be tampered with or modified."
+				"objectives" : "- Determine whether the JWTs expose sensitive information.- Determine whether the JWTs can be tampered with or modified.",
+				"severity" : 1
 			}
 		}
 	},
@@ -251,87 +305,108 @@
 		"body" : {
 			"WSTG-INPV-01" : {
 				"name" : "Testing for Reflected Cross Site Scripting",
-				"objectives" : "- Identify variables that are reflected in responses.- Assess the input they accept and the encoding that gets applied on return (if any)."
+				"objectives" : "- Identify variables that are reflected in responses.- Assess the input they accept and the encoding that gets applied on return (if any).",
+				"severity" : 1
 			},
 			"WSTG-INPV-02" : {
 				"name" : "Testing for Stored Cross Site Scripting",
-				"objectives" : "- Identify stored input that is reflected on the client-side.- Assess the input they accept and the encoding that gets applied on return (if any)."
+				"objectives" : "- Identify stored input that is reflected on the client-side.- Assess the input they accept and the encoding that gets applied on return (if any).",
+				"severity" : 1
 			},
 			"WSTG-INPV-03" : {
 				"name" : "Testing for HTTP Verb Tampering",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			},
 			"WSTG-INPV-04" : {
 				"name" : "Testing for HTTP Parameter Pollution",
-				"objectives" : "- Identify the backend and the parsing method used.- Assess injection points and try bypassing input filters using HPP."
+				"objectives" : "- Identify the backend and the parsing method used.- Assess injection points and try bypassing input filters using HPP.",
+				"severity" : 1
 			},
 			"WSTG-INPV-05" : {
 				"name" : "Testing for SQL Injection",
-				"objectives" : "- Identify SQL injection points.- Assess the severity of the injection and the level of access that can be achieved through it."
+				"objectives" : "- Identify SQL injection points.- Assess the severity of the injection and the level of access that can be achieved through it.",
+				"severity" : 3
 			},
 			"WSTG-INPV-06" : {
 				"name" : "Testing for LDAP Injection",
-				"objectives" : "- Identify LDAP injection points.- Assess the severity of the injection."
+				"objectives" : "- Identify LDAP injection points.- Assess the severity of the injection.",
+				"severity" : 1
 			},
 			"WSTG-INPV-07" : {
 				"name" : "Testing for XML Injection",
-				"objectives" : "- Identify XML injection points.- Assess the types of exploits that can be attained and their severities."
+				"objectives" : "- Identify XML injection points.- Assess the types of exploits that can be attained and their severities.",
+				"severity" : 1
 			},
 			"WSTG-INPV-08" : {
 				"name" : "Testing for SSI Injection",
-				"objectives" : "- Identify SSI injection points.- Assess the severity of the injection."
+				"objectives" : "- Identify SSI injection points.- Assess the severity of the injection.",
+				"severity" : 1
 			},
 			"WSTG-INPV-09" : {
 				"name" : "Testing for XPath Injection",
-				"objectives" : "- Identify XPATH injection points."
+				"objectives" : "- Identify XPATH injection points.",
+				"severity" : 1
 			},
 			"WSTG-INPV-10" : {
 				"name" : "Testing for IMAP SMTP Injection",
-				"objectives" : "- Identify IMAP/SMTP injection points.- Understand the data flow and deployment structure of the system.- Assess the injection impacts."
+				"objectives" : "- Identify IMAP/SMTP injection points.- Understand the data flow and deployment structure of the system.- Assess the injection impacts.",
+				"severity" : 1
 			},
 			"WSTG-INPV-11" : {
 				"name" : "Testing for Code Injection",
-				"objectives" : "- Identify injection points where you can inject code into the application.- Assess the injection severity."
+				"objectives" : "- Identify injection points where you can inject code into the application.- Assess the injection severity.",
+				"severity" : 1
 			},
 			"WSTG-INPV-12" : {
 				"name" : "Testing for Command Injection",
-				"objectives" : "- Identify and assess the command injection points."
+				"objectives" : "- Identify and assess the command injection points.",
+				"severity" : 1
 			},
 			"WSTG-INPV-13" : {
 				"name" : "Testing for Buffer Overflow",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			},
 			"WSTG-INPV-14" : {
 				"name" : "Testing for Format String Injection",
-				"objectives" : "- Assess whether injecting format string conversion specifiers into user-controlled fields causes undesired behavior from the application."
+				"objectives" : "- Assess whether injecting format string conversion specifiers into user-controlled fields causes undesired behavior from the application.",
+				"severity" : 1
 			},
 			"WSTG-INPV-15" : {
 				"name" : "Testing for Incubated Vulnerability",
-				"objectives" : "- Identify injections that are stored and require a recall step to the stored injection.- Understand how a recall step could occur.- Set listeners or activate the recall step if possible."
+				"objectives" : "- Identify injections that are stored and require a recall step to the stored injection.- Understand how a recall step could occur.- Set listeners or activate the recall step if possible.",
+				"severity" : 1
 			},
 			"WSTG-INPV-16" : {
 				"name" : "Testing for HTTP Splitting Smuggling",
-				"objectives" : "- Assess if the application is vulnerable to splitting, identifying what possible attacks are achievable.- Assess if the chain of communication is vulnerable to smuggling, identifying what possible attacks are achievable."
+				"objectives" : "- Assess if the application is vulnerable to splitting, identifying what possible attacks are achievable.- Assess if the chain of communication is vulnerable to smuggling, identifying what possible attacks are achievable.",
+				"severity" : 1
 			},
 			"WSTG-INPV-17" : {
 				"name" : "Testing for HTTP Incoming Requests",
-				"objectives" : "- Monitor all incoming and outgoing HTTP requests to the Web Server to inspect any suspicious requests.- Monitor HTTP traffic without changes of end user Browser proxy or client-side application."
+				"objectives" : "- Monitor all incoming and outgoing HTTP requests to the Web Server to inspect any suspicious requests.- Monitor HTTP traffic without changes of end user Browser proxy or client-side application.",
+				"severity" : 1
 			},
 			"WSTG-INPV-18" : {
 				"name" : "Testing for Host Header Injection",
-				"objectives" : "- Assess if the Host header is being parsed dynamically in the application.- Bypass security controls that rely on the header."
+				"objectives" : "- Assess if the Host header is being parsed dynamically in the application.- Bypass security controls that rely on the header.",
+				"severity" : 1
 			},
 			"WSTG-INPV-19" : {
 				"name" : "Testing for Server-side Template Injection",
-				"objectives" : "- Detect template injection vulnerability points.- Identify the templating engine.- Build the exploit."
+				"objectives" : "- Detect template injection vulnerability points.- Identify the templating engine.- Build the exploit.",
+				"severity" : 1
 			},
 			"WSTG-INPV-20" : {
 				"name" : "Testing for Server-Side Request Forgery",
-				"objectives" : "- Identify SSRF injection points.- Test if the injection points are exploitable.- Asses the severity of the vulnerability."
+				"objectives" : "- Identify SSRF injection points.- Test if the injection points are exploitable.- Asses the severity of the vulnerability.",
+				"severity" : 1
 			},
 			"WSTG-INPV-21" : {
 				"name" : "Testing for Mass Assignment",
-				"objectives" : "- Identify requests that modify objects.- Assess if it is possible to modify fields never intended to be modified from outside"
+				"objectives" : "- Identify requests that modify objects.- Assess if it is possible to modify fields never intended to be modified from outside",
+				"severity" : 1
 			}
 		}
 	},
@@ -340,11 +415,13 @@
 		"body" : {
 			"WSTG-ERRH-01" : {
 				"name" : "Testing for Improper Error Handling",
-				"objectives" : "- Identify existing error output.- Analyze the different output returned."
+				"objectives" : "- Identify existing error output.- Analyze the different output returned.",
+				"severity" : 1
 			},
 			"WSTG-ERRH-02" : {
 				"name" : "Testing for Stack Traces",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			}
 		}
 	},
@@ -353,19 +430,23 @@
 		"body" : {
 			"WSTG-CRYP-01" : {
 				"name" : "Testing for Weak Transport Layer Security",
-				"objectives" : "- Validate the service configuration.- Review the digital certificate's cryptographic strength and validity.- Ensure that the TLS security is not bypassable and is properly implemented across the application."
+				"objectives" : "- Validate the service configuration.- Review the digital certificate's cryptographic strength and validity.- Ensure that the TLS security is not bypassable and is properly implemented across the application.",
+				"severity" : 1
 			},
 			"WSTG-CRYP-02" : {
 				"name" : "Testing for Padding Oracle",
-				"objectives" : "- Identify encrypted messages that rely on padding.- Attempt to break the padding of the encrypted messages and analyze the returned error messages for further analysis."
+				"objectives" : "- Identify encrypted messages that rely on padding.- Attempt to break the padding of the encrypted messages and analyze the returned error messages for further analysis.",
+				"severity" : 1
 			},
 			"WSTG-CRYP-03" : {
 				"name" : "Testing for Sensitive Information Sent via Unencrypted Channels",
-				"objectives" : "- Identify sensitive information transmitted through the various channels.- Assess the privacy and security of the channels used."
+				"objectives" : "- Identify sensitive information transmitted through the various channels.- Assess the privacy and security of the channels used.",
+				"severity" : 1
 			},
 			"WSTG-CRYP-04" : {
 				"name" : "Testing for Weak Encryption",
-				"objectives" : "- Provide a guideline for the identification weak encryption or hashing uses and implementations."
+				"objectives" : "- Provide a guideline for the identification weak encryption or hashing uses and implementations.",
+				"severity" : 1
 			}
 		}
 	},
@@ -374,43 +455,53 @@
 		"body" : {
 			"WSTG-BUSL-01" : {
 				"name" : "Test Business Logic Data Validation",
-				"objectives" : "- Identify data injection points.- Validate that all checks are occurring on the backend and can't be bypassed.- Attempt to break the format of the expected data and analyze how the application is handling it."
+				"objectives" : "- Identify data injection points.- Validate that all checks are occurring on the backend and can't be bypassed.- Attempt to break the format of the expected data and analyze how the application is handling it.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-02" : {
 				"name" : "Test Ability to Forge Requests",
-				"objectives" : "- Review the project documentation looking for guessable, predictable, or hidden functionality of fields.- Insert logically valid data in order to bypass normal business logic workflow."
+				"objectives" : "- Review the project documentation looking for guessable, predictable, or hidden functionality of fields.- Insert logically valid data in order to bypass normal business logic workflow.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-03" : {
 				"name" : "Test Integrity Checks",
-				"objectives" : "- Review the project documentation for components of the system that move, store, or handle data.- Determine what type of data is logically acceptable by the component and what types the system should guard against.- Determine who should be allowed to modify or read that data in each component.- Attempt to insert, update, or delete data values used by each component that should not be allowed per the business logic workflow."
+				"objectives" : "- Review the project documentation for components of the system that move, store, or handle data.- Determine what type of data is logically acceptable by the component and what types the system should guard against.- Determine who should be allowed to modify or read that data in each component.- Attempt to insert, update, or delete data values used by each component that should not be allowed per the business logic workflow.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-04" : {
 				"name" : "Test for Process Timing",
-				"objectives" : "- Review the project documentation for system functionality that may be impacted by time.- Develop and execute misuse cases."
+				"objectives" : "- Review the project documentation for system functionality that may be impacted by time.- Develop and execute misuse cases.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-05" : {
 				"name" : "Test Number of Times a Function Can Be Used Limits",
-				"objectives" : "- Identify functions that must set limits to the times they can be called.- Assess if there is a logical limit set on the functions and if it is properly validated."
+				"objectives" : "- Identify functions that must set limits to the times they can be called.- Assess if there is a logical limit set on the functions and if it is properly validated.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-06" : {
 				"name" : "Testing for the Circumvention of Work Flows",
-				"objectives" : "- Review the project documentation for methods to skip or go through steps in the application process in a different order from the intended business logic flow.- Develop a misuse case and try to circumvent every logic flow identified."
+				"objectives" : "- Review the project documentation for methods to skip or go through steps in the application process in a different order from the intended business logic flow.- Develop a misuse case and try to circumvent every logic flow identified.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-07" : {
 				"name" : "Test Defenses Against Application Misuse",
-				"objectives" : "- Generate notes from all tests conducted against the system.- Review which tests had a different functionality based on aggressive input.- Understand the defenses in place and verify if they are enough to protect the system against bypassing techniques."
+				"objectives" : "- Generate notes from all tests conducted against the system.- Review which tests had a different functionality based on aggressive input.- Understand the defenses in place and verify if they are enough to protect the system against bypassing techniques.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-08" : {
 				"name" : "Test Upload of Unexpected File Types",
-				"objectives" : "- Review the project documentation for file types that are rejected by the system.- Verify that the unwelcomed file types are rejected and handled safely.- Verify that file batch uploads are secure and do not allow any bypass against the set security measures."
+				"objectives" : "- Review the project documentation for file types that are rejected by the system.- Verify that the unwelcomed file types are rejected and handled safely.- Verify that file batch uploads are secure and do not allow any bypass against the set security measures.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-09" : {
 				"name" : "Test Upload of Malicious Files",
-				"objectives" : "- Identify the file upload functionality.- Review the project documentation to identify what file types are considered acceptable, and what types would be considered dangerous or malicious.- If documentation is not available then consider what would be appropriate based on the purpose of the application.- Determine how the uploaded files are processed.- Obtain or create a set of malicious files for testing.- Try to upload the malicious files to the application and determine whether it is accepted and processed."
+				"objectives" : "- Identify the file upload functionality.- Review the project documentation to identify what file types are considered acceptable, and what types would be considered dangerous or malicious.- If documentation is not available then consider what would be appropriate based on the purpose of the application.- Determine how the uploaded files are processed.- Obtain or create a set of malicious files for testing.- Try to upload the malicious files to the application and determine whether it is accepted and processed.",
+				"severity" : 1
 			},
 			"WSTG-BUSL-10" : {
 				"name" : "Test Payment Functionality",
-				"objectives" : "- Determine whether the business logic for the e-commerce functionality is robust.- Understand how the payment functionality works.- Determine whether the payment functionality is secure."
+				"objectives" : "- Determine whether the business logic for the e-commerce functionality is robust.- Understand how the payment functionality works.- Determine whether the payment functionality is secure.",
+				"severity" : 1
 			}
 		}
 	},
@@ -419,59 +510,73 @@
 		"body" : {
 			"WSTG-CLNT-01" : {
 				"name" : "Testing for DOM-Based Cross Site Scripting",
-				"objectives" : "- Identify DOM sinks.- Build payloads that pertain to every sink type."
+				"objectives" : "- Identify DOM sinks.- Build payloads that pertain to every sink type.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-02" : {
 				"name" : "Testing for JavaScript Execution",
-				"objectives" : "- Identify sinks and possible JavaScript injection points."
+				"objectives" : "- Identify sinks and possible JavaScript injection points.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-03" : {
 				"name" : "Testing for HTML Injection",
-				"objectives" : "- Identify HTML injection points and assess the severity of the injected content."
+				"objectives" : "- Identify HTML injection points and assess the severity of the injected content.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-04" : {
 				"name" : "Testing for Client-side URL Redirect",
-				"objectives" : "- Identify injection points that handle URLs or paths.- Assess the locations that the system could redirect to."
+				"objectives" : "- Identify injection points that handle URLs or paths.- Assess the locations that the system could redirect to.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-05" : {
 				"name" : "Testing for CSS Injection",
-				"objectives" : "- Identify CSS injection points.- Assess the impact of the injection."
+				"objectives" : "- Identify CSS injection points.- Assess the impact of the injection.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-06" : {
 				"name" : "Testing for Client-side Resource Manipulation",
-				"objectives" : "- Identify sinks with weak input validation.- Assess the impact of the resource manipulation."
+				"objectives" : "- Identify sinks with weak input validation.- Assess the impact of the resource manipulation.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-07" : {
 				"name" : "Testing Cross Origin Resource Sharing",
-				"objectives" : "- Identify endpoints that implement CORS.- Ensure that the CORS configuration is secure or harmless."
+				"objectives" : "- Identify endpoints that implement CORS.- Ensure that the CORS configuration is secure or harmless.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-08" : {
 				"name" : "Testing for Cross Site Flashing",
-				"objectives" : "- Decompile and analyze the application's code.- Assess sinks inputs and unsafe method usages."
+				"objectives" : "- Decompile and analyze the application's code.- Assess sinks inputs and unsafe method usages.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-09" : {
 				"name" : "Testing for Clickjacking",
-				"objectives" : "- Understand security measures in place.- Assess how strict the security measures are and if they are bypassable."
+				"objectives" : "- Understand security measures in place.- Assess how strict the security measures are and if they are bypassable.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-10" : {
 				"name" : "Testing WebSockets",
-				"objectives" : "- Identify the usage of WebSockets.- Assess its implementation by using the same tests on normal HTTP channels."
+				"objectives" : "- Identify the usage of WebSockets.- Assess its implementation by using the same tests on normal HTTP channels.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-11" : {
 				"name" : "Testing Web Messaging",
-				"objectives" : "- Assess the security of the message's origin.- Validate that it's using safe methods and validating its input."
+				"objectives" : "- Assess the security of the message's origin.- Validate that it's using safe methods and validating its input.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-12" : {
 				"name" : "Testing Browser Storage",
-				"objectives" : "- Determine whether the website is storing sensitive data in client-side storage.- The code handling of the storage objects should be examined for possibilities of injection attacks, such as utilizing unvalidated input or vulnerable libraries."
+				"objectives" : "- Determine whether the website is storing sensitive data in client-side storage.- The code handling of the storage objects should be examined for possibilities of injection attacks, such as utilizing unvalidated input or vulnerable libraries.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-13" : {
 				"name" : "Testing for Cross Site Script Inclusion",
-				"objectives" : "- Locate sensitive data across the system.- Assess the leakage of sensitive data through various techniques."
+				"objectives" : "- Locate sensitive data across the system.- Assess the leakage of sensitive data through various techniques.",
+				"severity" : 1
 			},
 			"WSTG-CLNT-14" : {
 				"name" : "Testing for Reverse Tabnabbing",
-				"objectives" : "N/A"
+				"objectives" : "N/A",
+				"severity" : 1
 			}
 		}
 	},
@@ -480,7 +585,8 @@
 		"body" : {
 			"WSTG-APIT-01" : {
 				"name" : "Testing GraphQL",
-				"objectives" : "- Assess that a secure and production-ready configuration is deployed.- Validate all input fields against generic attacks.- Ensure that proper access controls are applied."
+				"objectives" : "- Assess that a secure and production-ready configuration is deployed.- Validate all input fields against generic attacks.- Ensure that proper access controls are applied.",
+				"severity" : 1
 			}
 		}
 	}

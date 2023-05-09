@@ -33,7 +33,7 @@ def template(workbook, jsonData):
 		{
 			"bold": True,
 			"align": "center",
-			"bg_color": "#F97B22",
+			"bg_color": "#19A7CE",
 			"border": 1,
 			"valign": "vcenter",
 			"text_wrap": True,
@@ -46,6 +46,39 @@ def template(workbook, jsonData):
 			"border": 1,
 			"valign": "vcenter",
 			"text_wrap": True,
+		}
+	)
+
+	bodyHighCrit = workbook.add_format(
+		{
+			"align": "center",
+			"border": 1,
+			"valign": "vcenter",
+			"text_wrap": True,
+			"bg_color": "red",
+			"font_color": "white",
+		}
+	)
+
+	bodyMedHigh = workbook.add_format(
+		{
+			"align": "center",
+			"border": 1,
+			"valign": "vcenter",
+			"text_wrap": True,
+			"bg_color": "orange",
+			"font_color": "black",
+		}
+	)
+
+	bodyLowMed = workbook.add_format(
+		{
+			"align": "center",
+			"border": 1,
+			"valign": "vcenter",
+			"text_wrap": True,
+			"bg_color": "green",
+			"font_color": "black",
 		}
 	)
 
@@ -70,10 +103,23 @@ def template(workbook, jsonData):
 		}
 	)
 
+	bold = workbook.add_format(
+		{
+			"bold": True,
+			"font_size": 12,
+			"align": "right"
+		}
+	)
+
 	worksheet.write('A1', 'OWASP: Testing Guide v4.2 Checklist', title)
 	
 	worksheet.write('A3', 'Target Name : ')
 	worksheet.write('A4', 'Pentester Name : ')
+
+	worksheet.write('C2', 'Severity : ', bold)
+	worksheet.write('D2', 'High - Critical', bodyHighCrit)
+	worksheet.write('D3', 'Medium - High', bodyMedHigh)
+	worksheet.write('D4', 'Low - Medium', bodyLowMed)
 
 	start = 6
 	for testCase in jsonTestCase:
@@ -97,13 +143,23 @@ def template(workbook, jsonData):
 					worksheet.write(f'D{end}',endpoint, body)
 					worksheet.write(f'E{end}','', body)
 					end += 1
-				worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, body)
+				if(testCase['body'][bodyTest]['severity'] == 1):
+					worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyLowMed)
+				elif(testCase['body'][bodyTest]['severity'] == 2):
+					worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyMedHigh)
+				elif(testCase['body'][bodyTest]['severity'] == 3):
+					worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyHighCrit)
 				worksheet.merge_range(f"B{start}:B{end-1}", testCase['body'][bodyTest]['name'], body)
 				worksheet.merge_range(f"C{start}:C{end-1}", testCase['body'][bodyTest]['objectives'], body)
 				worksheet.merge_range(f"F{start}:F{end-1}", '', body)
 				worksheet.merge_range(f"G{start}:G{end-1}", '', body)
 			else:
-				worksheet.write(f'A{end}', bodyTest, body)
+				if(testCase['body'][bodyTest]['severity'] == 1):
+					worksheet.write(f'A{end}', bodyTest, bodyLowMed)
+				elif(testCase['body'][bodyTest]['severity'] == 2):
+					worksheet.write(f'A{end}', bodyTest, bodyMedHigh)
+				elif(testCase['body'][bodyTest]['severity'] == 3):
+					worksheet.write(f'A{end}', bodyTest, bodyHighCrit)
 				worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
 				worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
 				worksheet.write(f'D{end}', '', body)
@@ -132,7 +188,8 @@ def template(workbook, jsonData):
 
 def export(jsonData):
 	now = datetime.now()
-	fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
+	# fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
+	fileName = "coba.xlsx"
 	filePath = f"report/{fileName}"
 
 	workbook = xlsxwriter.Workbook(filePath)
