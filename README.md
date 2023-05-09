@@ -51,29 +51,36 @@ python3 main.py -f export.xml -l 1
 ## Idea
 - [X] Custom output name
 - [X] Level, only exploitation or include enumeration process
-- [ ] Check only suspicious header and body (filter header)
-- [ ] Research about regex
-- [ ] Basic search valid , not "invalid" match with "id"
+- [ ] Custom test case (add level / choose ID test case)
+- [ ] Custom target (filter test case)
+	- [ ] web
+	- [ ] infrastructure
+- [ ] Custom header check (filter header)
+- [ ] Research about regex (wstg.json)
 - [ ] Two type (different parsing mechanism)
-	- [X] Simple , row per endpoint in one test case, 
-	- [ ] Normal
-- [ ] Write all test case in excel or no?
-- [ ] Category, web, infra?
+	- [X] Simple, row per endpoint in one test case 
+	- [ ] Detail, each endpoint with many test case 
+- [ ] Filter from burp export
+	- [ ] Host
+	- [ ] Endpoint
+
+## Issue
+- [ ] Make filter more precision, "invalid" should not match with "id" parameter
 - [ ] set design excel (row height)
 - [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing
 
 ## Features
-- Filter based on host
-- Filter based on endpoint
+- TBU
 
 ## Excel Report
 
 ### Kolom
+- Test Case ID (with severity color)
+- Test Name
+- Objectives
 - Endpoint
-- Severity
-- Test Case
-- Screenshot
 - Result
+- Screenshot
 - Notes
 
 ## Testing
@@ -104,7 +111,4 @@ http://localhost:3000
 - Run mapper.py
 - Open excel report
 - Do penetration testing and use excel report as tracker and reference
-
-## Question
-- [ ] Severity dalam bentuk warna atau kolom?
 
