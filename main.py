@@ -62,10 +62,11 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Mapper description')
 	parser.add_argument("-f", "--filename", type=str)
 	parser.add_argument("-o", "--output", type=str)
+	parser.add_argument("-l", "--level", type=int)
 	args = parser.parse_args()
 
 	if(args.filename != None):
 		data = parseXML(args.filename)
-		mapper(data, args.output)
+		mapper(data, args.output, args.level)
 	else:
 		parser.print_help()

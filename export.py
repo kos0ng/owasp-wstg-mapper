@@ -2,10 +2,13 @@ import xlsxwriter
 from datetime import datetime
 import json
 
-def template(workbook, jsonData):
+def template(workbook, jsonData, level):
 	
 	fileTemplate = open("data/template_wstg.json","r").read()
 	jsonTestCase = json.loads(fileTemplate)
+
+	if(level == 1):
+		jsonTestCase = jsonTestCase[2:]
 
 	worksheet = workbook.add_worksheet()
 	
@@ -186,7 +189,7 @@ def template(workbook, jsonData):
 
 	return worksheet
 
-def export(jsonData, output):
+def export(jsonData, output, level):
 	if(output != None):
 		if(output.endswith(".xlsx")):
 			fileName = output
@@ -199,6 +202,5 @@ def export(jsonData, output):
 	filePath = f"report/{fileName}"
 
 	workbook = xlsxwriter.Workbook(filePath)
-	worksheet = template(workbook, jsonData)
+	worksheet = template(workbook, jsonData, level)
 	workbook.close()
-	
