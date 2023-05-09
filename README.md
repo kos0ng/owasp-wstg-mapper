@@ -11,13 +11,13 @@ pip install -r requirements.txt
 ### Show help
 
 ```bash
-python3 mapper.py -h
+python3 main.py -h
 ```
 
 ### Filter target
 
 ```bash
-python3 mapper.py -f export.xml -u 192.168.1.4
+python3 main.py -f export.xml -u 192.168.1.4
 ```
 
 ### Custom output name
