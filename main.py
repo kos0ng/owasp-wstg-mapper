@@ -33,7 +33,6 @@ def parseXML(xmlFile):
     	data[key] = {}
     	data[key]['request'] = parseHTTP(request.decode())
     	data[key]['response'] = parseHTTP(response.decode())    	
-    # print(data)
     return data
 
 def parseHeader(header):
@@ -51,9 +50,7 @@ def parseHeader(header):
 def parseHTTP(data):
 	tmp = data.split("\r\n\r\n")
 	header = tmp[0]
-	# header = tmp[0].split("\r\n")
-	body = tmp[1]
-	# header = parseHeader(header)	
+	body = tmp[1]	
 	data = {
 		"header" : header,
 		"body" : body
@@ -64,10 +61,11 @@ if __name__ == "__main__":
 	
 	parser = argparse.ArgumentParser(description='Mapper description')
 	parser.add_argument("-f", "--filename", type=str)
+	parser.add_argument("-o", "--output", type=str)
 	args = parser.parse_args()
 
 	if(args.filename != None):
 		data = parseXML(args.filename)
-		mapper(data)
+		mapper(data, args.output)
 	else:
 		parser.print_help()

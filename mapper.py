@@ -17,8 +17,7 @@ def check(key, data, jsonData):
 					break
 	return jsonData
 
-def mapper(data):
-	
+def mapper(data, output = None):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
 	
@@ -28,4 +27,4 @@ def mapper(data):
 		jsonData = check(i, data[i]['response']['header'],jsonData)
 		jsonData = check(i, data[i]['response']['body'],jsonData)
 
-	export(jsonData)
+	export(jsonData, output)

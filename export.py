@@ -186,14 +186,19 @@ def template(workbook, jsonData):
 
 	return worksheet
 
-def export(jsonData):
-	now = datetime.now()
-	# fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
-	fileName = "coba.xlsx"
+def export(jsonData, output):
+	if(output != None):
+		if(output.endswith(".xlsx")):
+			fileName = output
+		else:
+			fileName = output + ".xlsx"
+	else:
+		now = datetime.now()
+		fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
+	
 	filePath = f"report/{fileName}"
 
 	workbook = xlsxwriter.Workbook(filePath)
-
 	worksheet = template(workbook, jsonData)
-
 	workbook.close()
+	
