@@ -23,7 +23,7 @@ python3 mapper.py -f export.xml -u 192.168.1.4
 ### Custom output name
 
 ```bash
-python3 mapper.py -f export.xml -o threat_model_target.xlsx
+python3 main.py -f export.xml -o threat_model_target.xlsx
 ```
 
 ## Todo List
@@ -32,9 +32,10 @@ python3 mapper.py -f export.xml -o threat_model_target.xlsx
 - [X] Export burp
 - [X] Parsing hasil export burp
 - [ ] Standardisasi daftar pengujian dan ciri-cirinya
-- [ ] Mapping pengujian
+- [X] Mapping pengujian
 - [ ] Urutkan berdasarkan kebanyakan severity
-- [ ] Bikin report dalam excel
+	- [ ] High - Critical (3) , Medium - High (2), Low - Medium (1)
+- [X] Bikin report dalam excel
 
 ## Idea
 - [ ] Check only suspicious header and body (filter header)
