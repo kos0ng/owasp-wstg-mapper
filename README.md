@@ -31,7 +31,7 @@ python3 main.py -f export.xml -o threat_model_target.xlsx
 | Level      | Description |
 | ----------- | ----------- |
 | 1      |  Without Enumeration Test Case (WSTG-INFO and WSTG-CONF)      |
-| 2   | All Test Case        |
+| 2 (Default)  | All Test Case        |
 
 ```bash
 python3 main.py -f export.xml -l 1
@@ -50,13 +50,13 @@ python3 main.py -f export.xml -l 1
 
 ## Idea
 - [X] Custom output name
+- [X] Level, only exploitation or include enumeration process
 - [ ] Check only suspicious header and body (filter header)
 - [ ] Research about regex
 - [ ] Basic search valid , not "invalid" match with "id"
 - [ ] Two type (different parsing mechanism)
 	- [X] Simple , row per endpoint in one test case, 
 	- [ ] Normal
-- [ ] Level, only exploitation or include enumeration process
 - [ ] Write all test case in excel or no?
 - [ ] Category, web, infra?
 - [ ] set design excel (row height)
