@@ -31,10 +31,10 @@ python3 main.py -f export.xml -o threat_model_target.xlsx
 - [X] Akses fitur juice shop
 - [X] Export burp
 - [X] Parsing hasil export burp
-- [ ] Standardisasi daftar pengujian dan ciri-cirinya
+- [X] Standardisasi daftar pengujian dan ciri-cirinya
 - [X] Mapping pengujian
-- [ ] Urutkan berdasarkan kebanyakan severity
-	- [ ] High - Critical (3) , Medium - High (2), Low - Medium (1)
+- [X] Urutkan berdasarkan kebanyakan severity
+	- [X] High - Critical (3) , Medium - High (2), Low - Medium (1)
 - [X] Bikin report dalam excel
 
 ## Idea
