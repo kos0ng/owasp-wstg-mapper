@@ -70,7 +70,7 @@ def template(workbook, jsonData, level):
 			"valign": "vcenter",
 			"text_wrap": True,
 			"bg_color": "orange",
-			"font_color": "black",
+			"font_color": "white",
 		}
 	)
 
@@ -81,7 +81,7 @@ def template(workbook, jsonData, level):
 			"valign": "vcenter",
 			"text_wrap": True,
 			"bg_color": "green",
-			"font_color": "black",
+			"font_color": "white",
 		}
 	)
 

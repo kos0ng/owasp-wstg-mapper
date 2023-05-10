@@ -44,7 +44,7 @@ python3 main.py -f export.xml -l 1
 - [X] Parsing hasil export burp
 - [X] Standardisasi daftar pengujian dan ciri-cirinya
 - [X] Mapping pengujian
-- [X] Urutkan berdasarkan kebanyakan severity
+- [X] Urutkan berdasarkan kebanyakan severity (source : )
 	- [X] High - Critical (3) , Medium - High (2), Low - Medium (1)
 - [X] Bikin report dalam excel
 
