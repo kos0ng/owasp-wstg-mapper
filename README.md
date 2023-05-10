@@ -66,7 +66,7 @@ python3 main.py -f export.xml -l 1
 
 ## Issue
 - [ ] Make filter more precision, "invalid" should not match with "id" parameter
-- [ ] set design excel (row height)
+- [X] set design excel (row height)
 - [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing
 
 ## Features
