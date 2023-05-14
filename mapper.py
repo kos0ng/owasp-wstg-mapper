@@ -46,9 +46,16 @@ def assign(testData, data):
 				keyData.remove(j)
 	return testData
 
+def getBaseURL(data):
+	for i in data:
+		tmp = i.split("//")
+		result = tmp[-1].split("/")
+		return result[0]
+
 def mapper(data, output = None, level = None):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
 	for i in jsonData:
 		jsonData[i] = assign(jsonData[i], data)
-	export(jsonData, output, level)
+	baseURL = getBaseURL(data)
+	export(baseURL, jsonData, output, level)

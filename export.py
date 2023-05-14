@@ -6,7 +6,7 @@ import os
 def checkFile(path):
 	return os.path.isfile(path)
 
-def template(workbook, jsonData, level):
+def template(baseURL, workbook, jsonData, level):
 	
 	fileTemplate = open("data/template_wstg.json","r").read()
 	jsonTestCase = json.loads(fileTemplate)
@@ -120,13 +120,18 @@ def template(workbook, jsonData, level):
 
 	worksheet.write('A1', 'OWASP: Testing Guide v4.2 Checklist', title)
 	
-	worksheet.write('A3', 'Target Name : ')
-	worksheet.write('A4', 'Pentester Name : ')
+	worksheet.merge_range(f"A3:B3", f'Target URL/IP : {baseURL}')
+	worksheet.merge_range(f"A4:B4", 'Target Name : ')
+	
+	now = datetime.now()
+	startDate = now.strftime("%Y-%m-%d")
+	worksheet.write('C3', f'Start Date : {startDate}')
+	worksheet.write('C4', 'Pentester Name : ')
 
-	worksheet.write('C2', 'Severity : ', bold)
-	worksheet.write('D2', 'High - Critical', bodyHighCrit)
-	worksheet.write('D3', 'Medium - High', bodyMedHigh)
-	worksheet.write('D4', 'Low - Medium', bodyLowMed)
+	worksheet.write('E2', 'Severity : ', bold)
+	worksheet.write('F2', 'High - Critical', bodyHighCrit)
+	worksheet.write('F3', 'Medium - High', bodyMedHigh)
+	worksheet.write('F4', 'Low - Medium', bodyLowMed)
 
 	start = 6
 	for testCase in jsonTestCase:
@@ -193,7 +198,7 @@ def template(workbook, jsonData, level):
 
 	return worksheet
 
-def export(jsonData, output, level):
+def export(baseURL, jsonData, output, level):
 	if(output != None):
 		if(output.endswith(".xlsx")):
 			fileName = output
@@ -208,21 +213,21 @@ def export(jsonData, output, level):
 		option = input(f"Replace file {filePath} ? (Y/N) : ")
 		if(option.upper() == "Y"):
 			workbook = xlsxwriter.Workbook(filePath)
-			worksheet = template(workbook, jsonData, level)
+			worksheet = template(baseURL, workbook, jsonData, level)
 			workbook.close()
 			print(f"Report written to {filePath}")
 		elif(option.upper() == "N"):
 			arrFilePath = filePath.split(".")
 			filePath = arrFilePath[0] + "_2." + arrFilePath[1]
 			workbook = xlsxwriter.Workbook(filePath)
-			worksheet = template(workbook, jsonData, level)
+			worksheet = template(baseURL, workbook, jsonData, level)
 			workbook.close()
 			print(f"Report written to {filePath}")
 		else:
 			print("Option unknown!")
 	else:
 		workbook = xlsxwriter.Workbook(filePath)
-		worksheet = template(workbook, jsonData, level)
+		worksheet = template(baseURL, workbook, jsonData, level)
 		workbook.close()
 		print(f"Report written to {filePath}")
 
