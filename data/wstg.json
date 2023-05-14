@@ -2,19 +2,25 @@
 	"WSTG-INPV-05" : {
 		"test" : {
 			"request" : {
-				"regex" : [".*\\?=.*"],
-				"basic" : ["id","username"]
+				"regex" : ["[\\?]?([\\w]+)=([\\w-]+)"]
+			},
+			"response" : {
+				"regex" : []
 			}
 		},
+		"files" : 0,
 		"target" : []
 	},
 	"WSTG-ATHZ-04" : {
 		"test" : {
 			"request" : {
-				"regex" : [],
-				"basic" : ["Authorization", "token"]
+				"regex" : ["Authorization"]
+			},
+			"response" : {
+				"regex" : []
 			}
 		},
+		"files" : 0,
 		"target" : []
 	}
 }
