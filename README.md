@@ -51,12 +51,21 @@ python3 main.py -f export.xml -l 1
 ## Idea
 - [X] Custom output name
 - [X] Level, only exploitation or include enumeration process
+- [X] Research about regex (wstg.json)
+- [ ] File check
+	- [ ] If exist overwrite it?
+	- [ ] If xml/input file doesn't exist, output error
+- [ ] Excel
+	- [ ] URL/IP
+	- [ ] Date
+	- [ ] Lock column
+	- [ ] Freeze column
 - [ ] Custom test case (add level / choose ID test case)
 - [ ] Custom target (filter test case)
 	- [ ] web
 	- [ ] infrastructure
 - [ ] Custom header check (filter header)
-- [ ] Research about regex (wstg.json)
+- [ ] Custom check on req header/req response/resp header/resp body
 - [ ] Two type (different parsing mechanism)
 	- [X] Simple, row per endpoint in one test case 
 	- [ ] Detail, each endpoint with many test case 
@@ -65,9 +74,12 @@ python3 main.py -f export.xml -l 1
 	- [ ] Endpoint
 
 ## Issue
-- [ ] Make filter more precision, "invalid" should not match with "id" parameter
+- [ ] Make filter more precision, "invalid" should not match with "id" parameter 
 - [X] set design excel (row height)
 - [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing
+- [X] Duplicate/redundant endpoint
+- [X] Add exception for files in json files
+- [ ] Try catch on data that has blank response
 
 ## Features
 - TBU
