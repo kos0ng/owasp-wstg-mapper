@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 import argparse
 import base64
 import re
+import os
 from uuid import UUID
 from mapper import mapper
 
@@ -12,6 +13,9 @@ def isValidUUID(uuid_to_test, version=4):
     except ValueError:
         return False
     return str(uuid_obj) == uuid_to_test
+
+def checkFile(path):
+	return os.path.isfile(path)
 
 def formatURL(url):
 	tmp = url.split("/")
@@ -103,7 +107,10 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	if(args.filename != None):
-		data = parseXML(args.filename)
-		mapper(data, args.output, args.level)
+		if(checkFile(args.filename)):
+			data = parseXML(args.filename)
+			mapper(data, args.output, args.level)
+		else:
+			print(f"File \"{args.filename}\" not found!")
 	else:
 		parser.print_help()

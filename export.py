@@ -1,6 +1,10 @@
 import xlsxwriter
 from datetime import datetime
 import json
+import os
+
+def checkFile(path):
+	return os.path.isfile(path)
 
 def template(workbook, jsonData, level):
 	
@@ -200,7 +204,26 @@ def export(jsonData, output, level):
 		fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
 	
 	filePath = f"report/{fileName}"
+	if(checkFile(filePath)):
+		option = input(f"Replace file {filePath} ? (Y/N) : ")
+		if(option.upper() == "Y"):
+			workbook = xlsxwriter.Workbook(filePath)
+			worksheet = template(workbook, jsonData, level)
+			workbook.close()
+			print(f"Report written to {filePath}")
+		elif(option.upper() == "N"):
+			arrFilePath = filePath.split(".")
+			filePath = arrFilePath[0] + "_2." + arrFilePath[1]
+			workbook = xlsxwriter.Workbook(filePath)
+			worksheet = template(workbook, jsonData, level)
+			workbook.close()
+			print(f"Report written to {filePath}")
+		else:
+			print("Option unknown!")
+	else:
+		workbook = xlsxwriter.Workbook(filePath)
+		worksheet = template(workbook, jsonData, level)
+		workbook.close()
+		print(f"Report written to {filePath}")
 
-	workbook = xlsxwriter.Workbook(filePath)
-	worksheet = template(workbook, jsonData, level)
-	workbook.close()
+	
