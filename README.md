@@ -52,9 +52,9 @@ python3 main.py -f export.xml -l 1
 - [X] Custom output name
 - [X] Level, only exploitation or include enumeration process
 - [X] Research about regex (wstg.json)
-- [ ] File check
-	- [ ] If exist overwrite it?
-	- [ ] If xml/input file doesn't exist, output error
+- [X] File check
+	- [X] If exist overwrite it?
+	- [X] If xml/input file doesn't exist, output error
 - [ ] Excel
 	- [ ] URL/IP
 	- [ ] Date
