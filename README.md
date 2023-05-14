@@ -56,8 +56,8 @@ python3 main.py -f export.xml -l 1
 	- [X] If exist overwrite it?
 	- [X] If xml/input file doesn't exist, output error
 - [ ] Excel
-	- [ ] URL/IP
-	- [ ] Date
+	- [X] URL/IP
+	- [X] Date
 	- [ ] Lock column
 	- [ ] Freeze column
 - [ ] Custom test case (add level / choose ID test case)
@@ -76,7 +76,7 @@ python3 main.py -f export.xml -l 1
 ## Issue
 - [ ] Make filter more precision, "invalid" should not match with "id" parameter 
 - [X] set design excel (row height)
-- [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing
+- [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing (regex : *)
 - [X] Duplicate/redundant endpoint
 - [X] Add exception for files in json files
 - [ ] Try catch on data that has blank response
