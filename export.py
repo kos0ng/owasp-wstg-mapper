@@ -15,6 +15,8 @@ def template(baseURL, workbook, jsonData, level):
 		jsonTestCase = jsonTestCase[2:]
 
 	worksheet = workbook.add_worksheet()
+
+	worksheet.freeze_panes(0, 2)
 	
 	title = workbook.add_format({'bold': True})
 	title.set_font_size(14)
