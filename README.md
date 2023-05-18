@@ -58,8 +58,8 @@ python3 main.py -f export.xml -l 1
 - [ ] Excel
 	- [X] URL/IP
 	- [X] Date
-	- [ ] Lock column
-	- [ ] Freeze column
+	- [ ] Lock column (can't insert row)
+	- [X] Freeze column
 - [ ] Custom test case (add level / choose ID test case)
 - [ ] Custom target (filter test case)
 	- [ ] web
