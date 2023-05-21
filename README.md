@@ -55,23 +55,22 @@ python3 main.py -f export.xml -l 1
 - [X] File check
 	- [X] If exist overwrite it?
 	- [X] If xml/input file doesn't exist, output error
-- [ ] Excel
+- [X] Excel
 	- [X] URL/IP
 	- [X] Date
 	- [ ] Lock column (can't insert row)
 	- [X] Freeze column
-- [ ] Custom test case (add level / choose ID test case)
-- [ ] Custom target (filter test case)
-	- [ ] web
-	- [ ] infrastructure
-- [ ] Custom header check (filter header)
-- [ ] Custom check on req header/req response/resp header/resp body
 - [ ] Two type (different parsing mechanism)
 	- [X] Simple, row per endpoint in one test case 
 	- [ ] Detail, each endpoint with many test case 
 - [ ] Filter from burp export
 	- [ ] Host
 	- [ ] Endpoint
+- [ ] Custom header check (filter header)
+- [ ] Custom target (filter test case)
+	- [ ] web
+	- [ ] infrastructure
+- [ ] Custom test case (add level / choose ID test case)
 
 ## Issue
 - [ ] Make filter more precision, "invalid" should not match with "id" parameter 
