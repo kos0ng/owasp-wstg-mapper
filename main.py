@@ -130,12 +130,13 @@ if __name__ == "__main__":
 	parser.add_argument("-f", "--filename", type=str)
 	parser.add_argument("-o", "--output", type=str)
 	parser.add_argument("-l", "--level", type=int)
+	parser.add_argument("-t", "--type", type=int)
 	args = parser.parse_args()
 
 	if(args.filename != None):
 		if(checkFile(args.filename)):
 			data = parseXML(args.filename)
-			mapper(data, args.output, args.level)
+			mapper(data, args.output, args.level, args.type)
 		else:
 			print(f"File \"{args.filename}\" not found!")
 	else:

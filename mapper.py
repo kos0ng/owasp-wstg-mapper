@@ -52,10 +52,13 @@ def getBaseURL(data):
 		result = tmp[-1].split("/")
 		return result[0]
 
-def mapper(data, output = None, level = None):
+def mapper(data, output = None, level = None, reportType = 1):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
-	for i in jsonData:
-		jsonData[i] = assign(jsonData[i], data)
+	
+	if(reportType == 1):
+		for i in jsonData:
+			jsonData[i] = assign(jsonData[i], data)
+	
 	baseURL = getBaseURL(data)
 	export(baseURL, jsonData, output, level)
