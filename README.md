@@ -79,7 +79,8 @@ python3 main.py -f export.xml -l 1
 - [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing (regex : *)
 - [X] Duplicate/redundant endpoint
 - [X] Add exception for files in json files
-- [ ] Try catch on data that has blank response
+- [X] Add parsing mime type for file access
+- [X] Try catch on data that has blank response and request
 
 ## Features
 - TBU
