@@ -26,12 +26,12 @@ python3 main.py -f export.xml -u 192.168.1.4
 python3 main.py -f export.xml -o threat_model_target.xlsx
 ```
 
-### Set level output
+### Set report type output
 
-| Level      | Description |
+| tYPE      | Description |
 | ----------- | ----------- |
-| 1      |  Without Enumeration Test Case (WSTG-INFO and WSTG-CONF)      |
-| 2 (default)  | All Test Case        |
+| 1 (default)     |  Simple, one test case many endpoint (sample screenshot for each test case)   |
+| 2   | Detailed, one endpoint many test case and (screenshot for each testcase on each endpoint )       |
 
 ```bash
 python3 main.py -f export.xml -l 1
@@ -50,7 +50,6 @@ python3 main.py -f export.xml -l 1
 
 ## Idea
 - [X] Custom output name
-- [X] Level, only exploitation or include enumeration process
 - [X] Research about regex (wstg.json)
 - [X] File check
 	- [X] If exist overwrite it?
