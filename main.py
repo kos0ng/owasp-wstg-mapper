@@ -3,6 +3,7 @@ import argparse
 import base64
 import re
 import os
+import magic
 from uuid import UUID
 from mapper import mapper
 
@@ -65,14 +66,28 @@ def parseXML(xmlFile):
     	response = item.find('response').text
 
     	url = normalizeURL(url)
-    	request = base64.b64decode(request)
-    	response = base64.b64decode(response)
     	
     	key = f"{method} {url}"
-    	
     	data[key] = {}
-    	data[key]['request'] = parseHTTP(request.decode())
-    	data[key]['response'] = parseHTTP(response.decode())    	
+
+    	if(request == None):
+    		request = ""
+    		data[key]['request'] = ''
+    	else:
+    		request = base64.b64decode(request).decode()
+    		data[key]['request'] = parseHTTP(request)
+    	
+    	if(response == None):
+    		response =  ""
+    		data[key]['response'] = ''
+    	else:
+    		try:
+    			response = base64.b64decode(response).decode()
+    			data[key]['response'] = parseHTTP(response)
+    		except Exception as e:
+    			response = base64.b64decode(response)
+    			data[key]['response'] = parseFile(response)
+    	
     return data
 
 def parseHeader(header):
@@ -96,6 +111,17 @@ def parseHTTP(data):
 		"body" : body
 	}
 	return data
+
+def parseFile(data):
+	tmp = data.split(b"\r\n\r\n")
+	header = tmp[0]
+	body = tmp[1]
+	data = {
+		"header" : header,
+		"body" : magic.from_buffer(body[:2048])
+	}
+	return data
+
 
 if __name__ == "__main__":
 	
