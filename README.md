@@ -76,7 +76,6 @@ python3 main.py -i example/export.xml -t 2
 	- [X] Host
 	- [X] Endpoint
 - [X] Custom test case (add level / choose ID test case)
-- [ ] Output exception when ctrl+c
 
 ## Issue
 - [ ] Make filter more precision, "invalid" should not match with "id" parameter 
