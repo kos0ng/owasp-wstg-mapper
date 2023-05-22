@@ -53,7 +53,7 @@ def normalizeURL(url):
 	return f"{protocol}://{formatURL(endpoint)}"
 
 
-def parseXML(xmlFile):
+def parseXML(xmlFile, filterUrl = None):
   
     data = {}
     tree = ET.parse(xmlFile)
@@ -66,28 +66,54 @@ def parseXML(xmlFile):
     	response = item.find('response').text
 
     	url = normalizeURL(url)
-    	
-    	key = f"{method} {url}"
-    	data[key] = {}
 
-    	if(request == None):
-    		request = ""
-    		data[key]['request'] = ''
-    	else:
-    		request = base64.b64decode(request).decode()
-    		data[key]['request'] = parseHTTP(request)
+    	if(filterUrl != None):
+    		if(filterUrl in url):
+    			key = f"{method} {url}"
+	    		data[key] = {}
+
+    			if(request == None):
+    				request = ""
+    				data[key]['request'] = ''
+    			else:
+    				request = base64.b64decode(request).decode()
+    				data[key]['request'] = parseHTTP(request)
     	
-    	if(response == None):
-    		response =  ""
-    		data[key]['response'] = ''
+    			if(response == None):
+    				response =  ""
+    				data[key]['response'] = ''
+    			else:
+    				try:
+    					response = base64.b64decode(response).decode()
+    					data[key]['response'] = parseHTTP(response)
+    				except Exception as e:
+    					response = base64.b64decode(response)
+    					data[key]['response'] = parseFile(response)
+    			
+    			data[key]['testCases'] = []
     	else:
-    		try:
-    			response = base64.b64decode(response).decode()
-    			data[key]['response'] = parseHTTP(response)
-    		except Exception as e:
-    			response = base64.b64decode(response)
-    			data[key]['response'] = parseFile(response)
-    	data[key]['testCases'] = []
+    		
+    		key = f"{method} {url}"
+	    	data[key] = {}
+
+    		if(request == None):
+    			request = ""
+    			data[key]['request'] = ''
+    		else:
+    			request = base64.b64decode(request).decode()
+    			data[key]['request'] = parseHTTP(request)
+    	
+    		if(response == None):
+    			response =  ""
+    			data[key]['response'] = ''
+    		else:
+    			try:
+    				response = base64.b64decode(response).decode()
+    				data[key]['response'] = parseHTTP(response)
+    			except Exception as e:
+    				response = base64.b64decode(response)
+    				data[key]['response'] = parseFile(response)
+    		data[key]['testCases'] = []
     	
     return data
 
@@ -128,21 +154,22 @@ if __name__ == "__main__":
 	
 	listURL = []
 	parser = argparse.ArgumentParser(description='Mapper description')
-	parser.add_argument("-f", "--filename", type=str)
+	parser.add_argument("-i", "--input", type=str)
 	parser.add_argument("-o", "--output", type=str)
 	parser.add_argument("-t", "--type", type=int)
+	parser.add_argument("-f", "--filter", type=str)
 	args = parser.parse_args()
 
 	listType = [None, 1,2]
 
-	if(args.filename != None):
-		if(checkFile(args.filename)):
+	if(args.input != None):
+		if(checkFile(args.input)):
 			if(args.type not in listType):
 				print("Unknown Type!")
 			
-			data = parseXML(args.filename)
+			data = parseXML(args.input, args.filter)
 			mapper(data, args.output, args.type)
 		else:
-			print(f"File \"{args.filename}\" not found!")
+			print(f"File \"{args.input}\" not found!")
 	else:
 		parser.print_help()

@@ -3,6 +3,8 @@ from datetime import datetime
 import json
 import os
 
+allEndpoints = ["Information Gathering", "Configuration and Deployment Management Testing"]
+
 def checkFile(path):
 	return os.path.isfile(path)
 
@@ -147,26 +149,59 @@ def templateSimple(baseURL, workbook, jsonData):
 		worksheet.set_row(start, 100)
 		start += 1
 		end = start
-
+		
 		# body
-
 		for bodyTest in testCase['body']:
 			if(bodyTest in jsonData):
 				listEndpoint = jsonData[bodyTest]['target']
-				for endpoint in listEndpoint:
-					worksheet.write(f'D{end}',endpoint, body)
-					worksheet.write(f'E{end}','', body)
+				if(len(listEndpoint) == 1):
+					if(testCase['body'][bodyTest]['severity'] == 1):
+						worksheet.write(f'A{end}', bodyTest, bodyLowMed)
+					elif(testCase['body'][bodyTest]['severity'] == 2):
+						worksheet.write(f'A{end}', bodyTest, bodyMedHigh)
+					elif(testCase['body'][bodyTest]['severity'] == 3):
+						worksheet.write(f'A{end}', bodyTest, bodyHighCrit)
+					worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
+					worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
+					worksheet.write(f'D{end}', listEndpoint[0], body)
+					worksheet.write(f'E{end}', '', body)
+					worksheet.write(f'F{end}', '', body)
+					worksheet.write(f'G{end}', '', body)
+					worksheet.set_row(end, 100)
 					end += 1
-				if(testCase['body'][bodyTest]['severity'] == 1):
-					worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyLowMed)
-				elif(testCase['body'][bodyTest]['severity'] == 2):
-					worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyMedHigh)
-				elif(testCase['body'][bodyTest]['severity'] == 3):
-					worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyHighCrit)
-				worksheet.merge_range(f"B{start}:B{end-1}", testCase['body'][bodyTest]['name'], body)
-				worksheet.merge_range(f"C{start}:C{end-1}", testCase['body'][bodyTest]['objectives'], body)
-				worksheet.merge_range(f"F{start}:F{end-1}", '', body)
-				worksheet.merge_range(f"G{start}:G{end-1}", '', body)
+				elif(len(listEndpoint) == 0):
+					if(testCase['body'][bodyTest]['severity'] == 1):
+						worksheet.write(f'A{end}', bodyTest, bodyLowMed)
+					elif(testCase['body'][bodyTest]['severity'] == 2):
+						worksheet.write(f'A{end}', bodyTest, bodyMedHigh)
+					elif(testCase['body'][bodyTest]['severity'] == 3):
+						worksheet.write(f'A{end}', bodyTest, bodyHighCrit)
+					worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
+					worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
+					if(testCase['header'] in allEndpoints):
+						worksheet.write(f'D{end}', '*', body)
+					else:
+						worksheet.write(f'D{end}', '', body)
+					worksheet.write(f'E{end}', '', body)
+					worksheet.write(f'F{end}', '', body)
+					worksheet.write(f'G{end}', '', body)
+					worksheet.set_row(end, 100)
+					end += 1
+				else:
+					for endpoint in listEndpoint:
+						worksheet.write(f'D{end}',endpoint, body)
+						worksheet.write(f'E{end}','', body)
+						end += 1
+					if(testCase['body'][bodyTest]['severity'] == 1):
+						worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyLowMed)
+					elif(testCase['body'][bodyTest]['severity'] == 2):
+						worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyMedHigh)
+					elif(testCase['body'][bodyTest]['severity'] == 3):
+						worksheet.merge_range(f"A{start}:A{end-1}", bodyTest, bodyHighCrit)
+					worksheet.merge_range(f"B{start}:B{end-1}", testCase['body'][bodyTest]['name'], body)
+					worksheet.merge_range(f"C{start}:C{end-1}", testCase['body'][bodyTest]['objectives'], body)
+					worksheet.merge_range(f"F{start}:F{end-1}", '', body)
+					worksheet.merge_range(f"G{start}:G{end-1}", '', body)
 			else:
 				if(testCase['body'][bodyTest]['severity'] == 1):
 					worksheet.write(f'A{end}', bodyTest, bodyLowMed)
@@ -176,7 +211,10 @@ def templateSimple(baseURL, workbook, jsonData):
 					worksheet.write(f'A{end}', bodyTest, bodyHighCrit)
 				worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
 				worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
-				worksheet.write(f'D{end}', '', body)
+				if(testCase['header'] in allEndpoints):
+					worksheet.write(f'D{end}', '*', body)
+				else:
+					worksheet.write(f'D{end}', '', body)
 				worksheet.write(f'E{end}', '', body)
 				worksheet.write(f'F{end}', '', body)
 				worksheet.write(f'G{end}', '', body)
