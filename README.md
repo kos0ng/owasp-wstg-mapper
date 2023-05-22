@@ -86,7 +86,7 @@ python3 main.py -i example/export.xml -t 2
 - [X] Add exception for files in json files
 - [X] Add parsing mime type for file access
 - [X] Try catch on data that has blank response and request
-- [ ] Remove files from detail mapper
+- [X] Remove files from detail mapper
 
 ## Features
 - TBU
