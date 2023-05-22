@@ -2,7 +2,9 @@ import json
 import re
 from export import *
 
-def removeFilesURL(blacklist, keys):
+blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico"]
+
+def removeFilesURL(keys):
 	sanitized = []
 	for i in keys:
 		check = True
@@ -14,11 +16,16 @@ def removeFilesURL(blacklist, keys):
 			sanitized.append(i)
 	return sanitized
 
+def checkBlackList(url):
+	for i in blacklist:
+		if(i in url):
+			return True
+	return False
+
 def assignSimple(testData, data):
 	keyData = list(data.keys())
 	if(testData['files'] == 0):
-		blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico"]
-		keyData = removeFilesURL(blacklist, keyData)
+		keyData = removeFilesURL(keyData)
 	testCase = testData['test']
 	request = testCase['request']
 	response = testCase['response']
@@ -46,9 +53,12 @@ def assignSimple(testData, data):
 				keyData.remove(j)
 	return testData
 
-def assignDetail(testData, data):	
+def assignDetail(testData, data, url):	
 	for i in testData:
 		test = testData[i]['test']
+		if(testData[i]['files'] == 0):
+			if(checkBlackList(url)):
+				continue
 		testRequest = test['request']['regex']
 		testResponse = test['response']['regex']
 		check = True
@@ -77,16 +87,28 @@ def getBaseURL(data):
 		result = tmp[-1].split("/")
 		return result[0]
 
-def mapper(data, output = None, reportType = 1):
+def filterTest(data, dataLevel):
+	newJson = {}
+	for i in dataLevel:
+		if(i in data): # should be deleted 
+			newJson[i] = data[i]
+	return newJson
+
+
+def mapper(data, output, reportType, level):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
-	
+
+	if(level != 0):
+		dataLevel = open(f"level/level{level}.data","r").read().split("\n") # check list level on main.py
+		jsonData = filterTest(jsonData, dataLevel)
+
 	if(reportType == 1):
 		for i in jsonData:
 			jsonData[i] = assignSimple(jsonData[i], data)
 	elif(reportType == 2):
 		for i in data:
-			data[i] = assignDetail(jsonData, data[i])
+			data[i] = assignDetail(jsonData, data[i], i)
 
 	baseURL = getBaseURL(data)
 	if(reportType == 1):

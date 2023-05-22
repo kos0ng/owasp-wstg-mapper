@@ -158,17 +158,27 @@ if __name__ == "__main__":
 	parser.add_argument("-o", "--output", type=str)
 	parser.add_argument("-t", "--type", type=int)
 	parser.add_argument("-f", "--filter", type=str)
+	parser.add_argument("-l", "--level", type=int)
 	args = parser.parse_args()
 
-	listType = [None, 1,2]
+	listType = [1, 2]
+	listLevel = [0, 1]
+
+	if(args.type == None):
+		args.type = 1
+	if(args.level == None):
+		args.level = 0
 
 	if(args.input != None):
 		if(checkFile(args.input)):
 			if(args.type not in listType):
 				print("Unknown Type!")
-			
+				exit()
+			if(args.level not in listLevel):
+				print("Unknown Level!")
+				exit()
 			data = parseXML(args.input, args.filter)
-			mapper(data, args.output, args.type)
+			mapper(data, args.output, args.type, args.level)
 		else:
 			print(f"File \"{args.input}\" not found!")
 	else:
