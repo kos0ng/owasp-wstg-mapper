@@ -61,9 +61,9 @@ python3 main.py -f export.xml -l 1
 - [X] Two type (different parsing mechanism)
 	- [X] Simple, row per endpoint in one test case 
 	- [X] Detail, each endpoint with many test case 
-- [ ] Filter from burp export
-	- [ ] Host
-	- [ ] Endpoint
+- [X] Filter from burp export
+	- [X] Host
+	- [X] Endpoint
 - [ ] Custom header check (filter header)
 - [ ] Custom target (filter test case)
 	- [ ] web
