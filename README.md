@@ -26,6 +26,17 @@ python3 main.py -i example/export.xml -u 192.168.1.4
 python3 main.py -i example/export.xml -o threat_model_target.xlsx
 ```
 
+### Set level of mapper
+
+| Type      | Description |
+| ----------- | ----------- |
+| 0 (default)     |  All test case  |
+| 1   | Common test case |
+
+```bash
+python3 main.py -i example/export.xml -l 1
+```
+
 ### Set report type output
 
 | Type      | Description |
@@ -64,10 +75,6 @@ python3 main.py -i example/export.xml -t 2
 - [X] Filter from burp export
 	- [X] Host
 	- [X] Endpoint
-- [ ] Custom header check (filter header)
-- [ ] Custom target (filter test case)
-	- [ ] web
-	- [ ] infrastructure
 - [ ] Custom test case (add level / choose ID test case)
 - [ ] Output exception when ctrl+c
 
