@@ -69,11 +69,12 @@ python3 main.py -f export.xml -l 1
 	- [ ] web
 	- [ ] infrastructure
 - [ ] Custom test case (add level / choose ID test case)
+- [ ] Output exception when ctrl+c
 
 ## Issue
 - [ ] Make filter more precision, "invalid" should not match with "id" parameter 
 - [X] set design excel (row height)
-- [ ] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing (regex : *)
+- [X] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing (regex : *)
 - [X] Duplicate/redundant endpoint
 - [X] Add exception for files in json files
 - [X] Add parsing mime type for file access
