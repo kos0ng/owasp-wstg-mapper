@@ -87,6 +87,7 @@ def parseXML(xmlFile):
     		except Exception as e:
     			response = base64.b64decode(response)
     			data[key]['response'] = parseFile(response)
+    	data[key]['testCases'] = []
     	
     return data
 
@@ -129,14 +130,18 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Mapper description')
 	parser.add_argument("-f", "--filename", type=str)
 	parser.add_argument("-o", "--output", type=str)
-	parser.add_argument("-l", "--level", type=int)
 	parser.add_argument("-t", "--type", type=int)
 	args = parser.parse_args()
 
+	listType = [None, 1,2]
+
 	if(args.filename != None):
 		if(checkFile(args.filename)):
+			if(args.type not in listType):
+				print("Unknown Type!")
+			
 			data = parseXML(args.filename)
-			mapper(data, args.output, args.level, args.type)
+			mapper(data, args.output, args.type)
 		else:
 			print(f"File \"{args.filename}\" not found!")
 	else:
