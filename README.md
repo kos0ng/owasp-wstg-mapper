@@ -57,11 +57,10 @@ python3 main.py -f export.xml -l 1
 - [X] Excel
 	- [X] URL/IP
 	- [X] Date
-	- [ ] Lock column (can't insert row)
 	- [X] Freeze column
-- [ ] Two type (different parsing mechanism)
+- [X] Two type (different parsing mechanism)
 	- [X] Simple, row per endpoint in one test case 
-	- [ ] Detail, each endpoint with many test case 
+	- [X] Detail, each endpoint with many test case 
 - [ ] Filter from burp export
 	- [ ] Host
 	- [ ] Endpoint
