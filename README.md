@@ -78,7 +78,7 @@ python3 main.py -i example/export.xml -t 2
 - [X] Custom test case (add level / choose ID test case)
 
 ## Issue
-- [ ] Make filter more precision, "invalid" should not match with "id" parameter 
+- [ ] Make filter more precision, "invalid" should not match with "id" parameter , regex ?id= , &id=
 - [X] set design excel (row height)
 - [X] Some test case doesn't need list endpoint such as Information Gathering,Configuration and Deployment Management Testing (regex : *)
 - [X] Duplicate/redundant endpoint
