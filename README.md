@@ -75,7 +75,7 @@ python3 main.py -i example/export.xml -t 2
 - [X] Filter from burp export
 	- [X] Host
 	- [X] Endpoint
-- [ ] Custom test case (add level / choose ID test case)
+- [X] Custom test case (add level / choose ID test case)
 - [ ] Output exception when ctrl+c
 
 ## Issue
@@ -86,6 +86,7 @@ python3 main.py -i example/export.xml -t 2
 - [X] Add exception for files in json files
 - [X] Add parsing mime type for file access
 - [X] Try catch on data that has blank response and request
+- [ ] Remove files from detail mapper
 
 ## Features
 - TBU
