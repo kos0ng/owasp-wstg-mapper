@@ -17,24 +17,24 @@ python3 main.py -h
 ### Filter target
 
 ```bash
-python3 main.py -f export.xml -u 192.168.1.4
+python3 main.py -i example/export.xml -u 192.168.1.4
 ```
 
 ### Custom output name
 
 ```bash
-python3 main.py -f export.xml -o threat_model_target.xlsx
+python3 main.py -i example/export.xml -o threat_model_target.xlsx
 ```
 
 ### Set report type output
 
-| tYPE      | Description |
+| Type      | Description |
 | ----------- | ----------- |
 | 1 (default)     |  Simple, one test case many endpoint (sample screenshot for each test case)   |
 | 2   | Detailed, one endpoint many test case and (screenshot for each testcase on each endpoint )       |
 
 ```bash
-python3 main.py -f export.xml -l 1
+python3 main.py -i example/export.xml -t 2
 ```
 
 ## Todo List
