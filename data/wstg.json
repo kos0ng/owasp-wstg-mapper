@@ -1,26 +1,1151 @@
 {
-	"WSTG-INPV-05" : {
+	"WSTG-IDNT-01" : {
 		"test" : {
 			"request" : {
-				"regex" : ["[\\?]?([\\w]+)=([\\w-]+)"]
+				"header_regex" : ["Authorization", "phpsessid"],
+				"body_regex" : ["role", "id"]
 			},
 			"response" : {
-				"regex" : []
+				"header_regex" : ["Authorization"],
+				"body_regex" : []
 			}
 		},
 		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-IDNT-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "password", "confirm_password", "email", "register", "registration"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["registration", "success", "succesfull", "fail", "error"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-IDNT-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "confirm_password", "password", "email", "add", "new"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["registration", "success", "fail", "error"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-IDNT-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "token", "uid" ],
+				"body_regex" : ["username", "email"]
+			},
+			"response" : {
+				"header_regex" : ["Authorization", "Cookie"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 1,
+		"target" : []
+	},
+	"WSTG-IDNT-05" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "update", "register", "add"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-ATHN-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "password", "confirm", "cpassword"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "password", "confirm"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "password", "login"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["success", "fail", "error", "wrong"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "password"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["success", "fail", "error", "wrong", "wait", "lock"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "token", "phpsessid", "session"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : ["Authorization", "token", "phpsessid", "session"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-05" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["remember"]
+			},
+			"response" : {
+				"header_regex" : ["remember"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-06" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : ["Authorization"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-07" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["password", "confirm", "cpassword"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["too short", "password length", "too weak"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-08" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["question", "answer"]
+			},
+			"response" : {
+				"header_regex" :  ["question", "answer"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-09" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["old_password", "current_password", "password"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["password different"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHN-10" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	
+	"WSTG-ATHZ-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["file", "src", "page", "source", "load", "preview"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHZ-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "token", "session", "sesid"],
+				"body_regex" : ["role"]
+			},
+			"response" : {
+				"header_regex" : ["Authorization", "token", "session", "sesid"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ATHZ-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "token", "session", "sesid"],
+				"body_regex" : ["role"]
+			},
+			"response" : {
+				"header_regex" : ["Authorization", "token", "session", "sessid"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
 		"target" : []
 	},
 	"WSTG-ATHZ-04" : {
 		"test" : {
 			"request" : {
-				"regex" : ["Authorization"]
+				"header_regex" : ["Authorization", "token", "sessid", "session"],
+				"body_regex" : ["id", "uid", "username"]
 			},
 			"response" : {
-				"regex" : []
+				"header_regex" : ["Authorization", "token", "session", "sessid"],
+				"body_regex" : []
 			}
 		},
 		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-SESS-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["session", "token"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : ["session", "token"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["session", "token", "Cookie"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : ["Set-Cookie"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["session", "token", "Cookie"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : ["Set-Cookie"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["session", "token", "Cookie"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-05" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Cookie"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-06" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["logout"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-07" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "session", "token"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-08" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "session", "token"],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-SESS-09" : {
+		"test" : {
+			"request" : {
+				"header_regex" : ["Authorization", "session", "token"],
+				"body_regex" : [""]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-INPV-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["search", "keyword", "id", "page"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 1,
+		"target" : []
+	},
+	"WSTG-INPV-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["comment", "username", "name", "message", "content"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 1,
+		"target" : []
+	},
+	"WSTG-INPV-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-05" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["username", "password", "keyword", "search", "name", "id"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : ["sql","error"]
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-06" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["user", "username", "password", "pass", "search", "keyword", "searchlogin"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-07" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["document"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-08" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-09" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["user", "username", "pass", "password"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-10" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["mailbox", "mail", "content", "message"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-11" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-12" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["cmd", "host"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-13" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-14" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-15" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-16" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-17" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["password","email","forgot_password"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-INPV-18" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["search", "keyword", "id", "page", "comment", "username", "name", "message", "content"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 1,
+		"target" : []
+	},
+	"WSTG-INPV-19" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["endpoint", "host", "target", "url"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-ERRH-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-ERRH-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-CRYP-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CRYP-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CRYP-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CRYP-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-BUSL-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-05" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-06" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-07" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-08" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["file", "filename", "upload", "filetype"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-BUSL-09" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["file", "filename", "upload", "filetype"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-CLNT-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["search", "keyword", "id", "page", "comment", "username", "name", "message", "content"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 1,
+		"target" : []
+	},
+	"WSTG-CLNT-02" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-03" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["search", "keyword", "id", "page", "comment", "username", "name", "message", "content"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 1,
+		"target" : []
+	},
+	"WSTG-CLNT-04" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["redirect", "to", "url", "go"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-05" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-06" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-07" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : ["Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-08" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-09" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-10" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["socket"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-11" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-12" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["*"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+	"WSTG-CLNT-13" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : []
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
+		"target" : []
+	},
+
+	"WSTG-APIT-01" : {
+		"test" : {
+			"request" : {
+				"header_regex" : [],
+				"body_regex" : ["graphql", "graphiql", "query"]
+			},
+			"response" : {
+				"header_regex" : [],
+				"body_regex" : []
+			}
+		},
+		"files" : 0,
+		"reflected" : 0,
 		"target" : []
 	}
 }

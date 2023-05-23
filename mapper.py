@@ -4,6 +4,10 @@ from export import *
 
 blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico"]
 
+regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[\/]({})/([\w-]+)"]
+regexBody = ["(?i)[\"\']{}[\"\'][ ]?:([ \"\w-]+)", "(?i)[\?\&]?({})=([\w-]+)",]
+regexResponse = ["(?i){}[ ]?:([ \'\"\w-]+)"]
+
 def removeFilesURL(keys):
 	sanitized = []
 	for i in keys:
@@ -29,26 +33,36 @@ def assignSimple(testData, data):
 	testCase = testData['test']
 	request = testCase['request']
 	response = testCase['response']
-	for i in request['regex']:
+	
+	for i in request['header_regex']:
 		for j in keyData:
-			x = re.search(i, data[j]['request']['header'])
-			if(x is None):
-				x = re.search(i, data[j]['request']['body'])
+			for k in regexHeader:
+				x = re.search(k.format(i), data[j]['request']['header'])
 				if(x is not None):
 					testData['target'].append(j)
 					keyData.remove(j)
-			else:
-				testData['target'].append(j)
-				keyData.remove(j)
-	for i in response['regex']:
+	for i in request['body_regex']:
+		for j in keyData:
+			if(i == "*"):
+				testData['target'].append("*")
+				return testData
+			for k in regexBody:
+				x = re.search(k.format(i), data[j]['request']['body'])
+				if(x is not None):
+					testData['target'].append(j)
+					keyData.remove(j)			
+	
+	for i in response['header_regex']:
+		for j in keyData:
+			for k in regexResponse:
+				x = re.search(k.format(i), data[j]['response']['header'])
+				if(x is not None):
+					testData['target'].append(j)
+					keyData.remove(j)
+	for i in response['body_regex']:
 		for j in keyData:
 			x = re.search(i, data[j]['response']['header'])
-			if(x is None):
-				x = re.search(i, data[j]['response']['body'])
-				if(x is not None):
-					testData['target'].append(j)
-					keyData.remove(j)
-			else:
+			if(x is not None):
 				testData['target'].append(j)
 				keyData.remove(j)
 	return testData
@@ -59,26 +73,50 @@ def assignDetail(testData, data, url):
 		if(testData[i]['files'] == 0):
 			if(checkBlackList(url)):
 				continue
-		testRequest = test['request']['regex']
-		testResponse = test['response']['regex']
+		testHeaderRequest = test['request']['header_regex']
+		testBodyRequest = test['request']['body_regex']
+		testHeaderResponse = test['response']['header_regex']
+		testBodyResponse = test['response']['body_regex']
 		check = True
-		for j in testRequest:
-			x = re.search(j, data['request']['header'])
-			if(x is None):
-				x = re.search(j, data['request']['body'])
+		for j in testHeaderRequest:
+			for k in regexHeader:
+				x = re.search(k.format(j), data['request']['header'])
 				if(x is not None):
 					data['testCases'].append(i)
-			else:
-				data['testCases'].append(i)
+					check = False
+					break
+			if(check == False):
+				break
 		if(check):
-			for j in testResponse:
-				x = re.search(j, data['response']['header'])
-				if(x is None):
-					x = re.search(j, data['response']['body'])
+			for j in testBodyRequest:
+				if(j == "*"):
+					data['testCases'].append(i)
+					break
+				for k in regexBody:
+					x = re.search(k.format(j), data['request']['body'])
 					if(x is not None):
 						data['testCases'].append(i)
-				else:
+						check = False
+						break
+				if(check == False):
+					break
+		if(check):
+			for j in testHeaderResponse:
+				for k in regexResponse:
+					x = re.search(k.format(j), data['response']['header'])
+					if(x is not None):
+						data['testCases'].append(i)
+						check = False
+						break
+				if(check == False):
+					break
+		if(check):
+			for j in testBodyResponse:
+				x = re.search(j, data['response']['body'])
+				if(x is not None):
 					data['testCases'].append(i)
+					check = False
+					break
 	return data
 
 def getBaseURL(data):
@@ -90,7 +128,7 @@ def getBaseURL(data):
 def filterTest(data, dataLevel):
 	newJson = {}
 	for i in dataLevel:
-		if(i in data): # should be deleted 
+		if(i in data): 
 			newJson[i] = data[i]
 	return newJson
 
