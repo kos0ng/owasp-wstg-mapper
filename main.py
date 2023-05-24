@@ -6,7 +6,7 @@ import os
 import magic
 from uuid import UUID
 from mapper import mapper
-
+from datetime import datetime
 
 def isValidUUID(uuid_to_test, version=4):
     try:
@@ -177,8 +177,32 @@ if __name__ == "__main__":
 			if(args.level not in listLevel):
 				print("Unknown Level!")
 				exit()
-			data = parseXML(args.input, args.filter)
-			mapper(data, args.output, args.type, args.level)
+			if(args.output != None):
+				if(args.output.endswith(".xlsx")):
+					fileName = args.output
+				else:
+					fileName = args.output + ".xlsx"
+			else:
+				now = datetime.now()
+				fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
+			
+			filePath = f"report/{fileName}"
+			
+			if(checkFile(filePath)):
+				option = input(f"Replace file {filePath} ? (Y/N) : ")
+				if(option.upper() == "Y"):
+					data = parseXML(args.input, args.filter)
+					mapper(data, filePath, args.type, args.level)
+				elif(option.upper() == "N"):
+					arrFilePath = filePath.split(".")
+					filePath = arrFilePath[0] + "_2." + arrFilePath[1]
+					data = parseXML(args.input, args.filter)
+					mapper(data, filePath, args.type, args.level)
+				else:
+					print("Option unknown!")
+			else:
+				data = parseXML(args.input, args.filter)
+				mapper(data, filePath, args.type, args.level)
 		else:
 			print(f"File \"{args.input}\" not found!")
 	else:

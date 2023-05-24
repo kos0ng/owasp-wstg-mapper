@@ -2,7 +2,7 @@
 	"WSTG-IDNT-01" : {
 		"test" : {
 			"request" : {
-				"header_regex" : ["Authorization", "phpsessid"],
+				"header_regex" : ["Authorization", "phpsessid", "token"],
 				"body_regex" : ["role", "id"]
 			},
 			"response" : {
@@ -187,8 +187,8 @@
 				"body_regex" : ["question", "answer"]
 			},
 			"response" : {
-				"header_regex" :  ["question", "answer"],
-				"body_regex" : []
+				"header_regex" :  [],
+				"body_regex" : ["question", "answer"]
 			}
 		},
 		"files" : 0,
@@ -214,7 +214,7 @@
 		"test" : {
 			"request" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["*"]
 			},
 			"response" : {
 				"header_regex" : [],
@@ -244,11 +244,11 @@
 	"WSTG-ATHZ-02" : {
 		"test" : {
 			"request" : {
-				"header_regex" : ["Authorization", "token", "session", "sesid"],
+				"header_regex" : ["Authorization", "token", "session", "sessid"],
 				"body_regex" : ["role"]
 			},
 			"response" : {
-				"header_regex" : ["Authorization", "token", "session", "sesid"],
+				"header_regex" : ["Authorization", "token", "session", "sessid"],
 				"body_regex" : []
 			}
 		},
@@ -517,11 +517,11 @@
 		"test" : {
 			"request" : {
 				"header_regex" : [],
-				"body_regex" : ["document"]
+				"body_regex" : ["document", "xml"]
 			},
 			"response" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["XML"]
 			}
 		},
 		"files" : 0,
@@ -531,7 +531,7 @@
 	"WSTG-INPV-08" : {
 		"test" : {
 			"request" : {
-				"header_regex" : [],
+				"header_regex" : ["\\.shtml"],
 				"body_regex" : []
 			},
 			"response" : {
@@ -577,7 +577,7 @@
 		"test" : {
 			"request" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["code", "cmd", "host", "eval", "exec", "calc"]
 			},
 			"response" : {
 				"header_regex" : [],
@@ -607,7 +607,7 @@
 		"test" : {
 			"request" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["username", "name"]
 			},
 			"response" : {
 				"header_regex" : [],
@@ -615,14 +615,14 @@
 			}
 		},
 		"files" : 0,
-		"reflected" : 0,
+		"reflected" : 1,
 		"target" : []
 	},
 	"WSTG-INPV-14" : {
 		"test" : {
 			"request" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["*"]
 			},
 			"response" : {
 				"header_regex" : [],
@@ -774,11 +774,11 @@
 		"test" : {
 			"request" : {
 				"header_regex" : [],
-				"body_regex" : ["*"]
+				"body_regex" : []
 			},
 			"response" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["password", "nik", "email", "ktp"]
 			}
 		},
 		"files" : 0,
@@ -960,7 +960,7 @@
 			},
 			"response" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["eval"]
 			}
 		},
 		"files" : 0,
@@ -1005,7 +1005,7 @@
 			},
 			"response" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["attr\\(\"style\"", "attr\\('style'"]
 			}
 		},
 		"files" : 0,
@@ -1020,7 +1020,7 @@
 			},
 			"response" : {
 				"header_regex" : [],
-				"body_regex" : []
+				"body_regex" : ["createElement\\(\"script\""]
 			}
 		},
 		"files" : 0,
@@ -1045,7 +1045,7 @@
 	"WSTG-CLNT-08" : {
 		"test" : {
 			"request" : {
-				"header_regex" : [],
+				"header_regex" : ["\\.swf"],
 				"body_regex" : []
 			},
 			"response" : {
@@ -1075,7 +1075,7 @@
 	"WSTG-CLNT-10" : {
 		"test" : {
 			"request" : {
-				"header_regex" : [],
+				"header_regex" : ["socket"],
 				"body_regex" : ["socket"]
 			},
 			"response" : {
@@ -1105,8 +1105,8 @@
 	"WSTG-CLNT-12" : {
 		"test" : {
 			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
+				"header_regex" : ["chat"],
+				"body_regex" : ["chat"]
 			},
 			"response" : {
 				"header_regex" : [],
@@ -1120,7 +1120,7 @@
 	"WSTG-CLNT-13" : {
 		"test" : {
 			"request" : {
-				"header_regex" : [],
+				"header_regex" : ["confidential", "secret", "\\.js"],
 				"body_regex" : []
 			},
 			"response" : {
@@ -1128,7 +1128,7 @@
 				"body_regex" : []
 			}
 		},
-		"files" : 0,
+		"files" : 1,
 		"reflected" : 0,
 		"target" : []
 	},

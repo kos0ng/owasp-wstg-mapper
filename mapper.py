@@ -8,6 +8,27 @@ regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[\/]({})/([\w-]+)"]
 regexBody = ["(?i)[\"\']{}[\"\'][ ]?:([ \"\w-]+)", "(?i)[\?\&]?({})=([\w-]+)",]
 regexResponse = ["(?i){}[ ]?:([ \'\"\w-]+)"]
 
+
+def checkReflected(request, response):
+	result = []
+	for i in regexHeader:
+		tmp = re.findall(i.format("([\w]+)"), request['header'])
+		for j in tmp:
+			val = j[1]
+			if(val not in result):
+				result.append(val)
+	for i in regexBody:
+		tmp = re.findall(i.format("([\w]+)"), request['body'])
+		for j in tmp:
+			val = j[1]
+			if(val not in result):
+				result.append(val)
+	for i in result:
+		if(i in response['body']):
+			return True
+	return False
+
+
 def removeFilesURL(keys):
 	sanitized = []
 	for i in keys:
@@ -65,6 +86,14 @@ def assignSimple(testData, data):
 			if(x is not None):
 				testData['target'].append(j)
 				keyData.remove(j)
+	
+	if(testData["reflected"] == 1) :
+		for j in keyData:
+			resultCheck = checkReflected(data[j]['request'], data[j]['response'])
+			if(resultCheck):
+				testData['target'].append(j)
+				keyData.remove(j)
+
 	return testData
 
 def assignDetail(testData, data, url):	
@@ -117,6 +146,11 @@ def assignDetail(testData, data, url):
 					data['testCases'].append(i)
 					check = False
 					break
+		if(check):
+			if(testData[i]['reflected'] == 1):
+				resultCheck = checkReflected(data['request'], data['response'])
+				if(resultCheck):
+					data['testCases'].append(i)
 	return data
 
 def getBaseURL(data):
@@ -133,7 +167,7 @@ def filterTest(data, dataLevel):
 	return newJson
 
 
-def mapper(data, output, reportType, level):
+def mapper(data, filePath, reportType, level):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
 
@@ -150,6 +184,6 @@ def mapper(data, output, reportType, level):
 
 	baseURL = getBaseURL(data)
 	if(reportType == 1):
-		export(baseURL, jsonData, output, reportType)
+		export(baseURL, jsonData, filePath, reportType)
 	elif(reportType == 2):
-		export(baseURL, data, output, reportType)
+		export(baseURL, data, filePath, reportType)

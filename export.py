@@ -1,7 +1,7 @@
 import xlsxwriter
-from datetime import datetime
 import json
 import os
+from datetime import datetime
 
 allEndpoints = ["Information Gathering", "Configuration and Deployment Management Testing"]
 
@@ -432,46 +432,13 @@ def templateDetail(baseURL, workbook, jsonData):
 	
 	return worksheet
 
-def export(baseURL, jsonData, output, reportType):
-	if(output != None):
-		if(output.endswith(".xlsx")):
-			fileName = output
-		else:
-			fileName = output + ".xlsx"
-	else:
-		now = datetime.now()
-		fileName = now.strftime("Pentest_Checklist_%Y%m%d_%H%M%S.xlsx")
-	
-	filePath = f"report/{fileName}"
-	if(checkFile(filePath)):
-		option = input(f"Replace file {filePath} ? (Y/N) : ")
-		if(option.upper() == "Y"):
-			workbook = xlsxwriter.Workbook(filePath)
-			if(reportType == 1):
-				worksheet = templateSimple(baseURL, workbook, jsonData)
-			elif(reportType == 2):
-				worksheet = templateDetail(baseURL, workbook, jsonData)
-			workbook.close()
-			print(f"Report written to {filePath}")
-		elif(option.upper() == "N"):
-			arrFilePath = filePath.split(".")
-			filePath = arrFilePath[0] + "_2." + arrFilePath[1]
-			workbook = xlsxwriter.Workbook(filePath)
-			if(reportType == 1):
-				worksheet = templateSimple(baseURL, workbook, jsonData)
-			elif(reportType == 2):
-				worksheet = templateSimple(baseURL, workbook, jsonData)
-			workbook.close()
-			print(f"Report written to {filePath}")
-		else:
-			print("Option unknown!")
-	else:
-		workbook = xlsxwriter.Workbook(filePath)
-		if(reportType == 1):
-			worksheet = templateSimple(baseURL, workbook, jsonData)
-		elif(reportType == 2):
-			worksheet = templateSimple(baseURL, workbook, jsonData)
-		workbook.close()
-		print(f"Report written to {filePath}")
+def export(baseURL, jsonData, filePath, reportType):
+	workbook = xlsxwriter.Workbook(filePath)
+	if(reportType == 1):
+		worksheet = templateSimple(baseURL, workbook, jsonData)
+	elif(reportType == 2):
+		worksheet = templateDetail(baseURL, workbook, jsonData)
+	workbook.close()
+	print(f"Report written to {filePath}")
 
 	
