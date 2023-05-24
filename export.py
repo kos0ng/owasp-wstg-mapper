@@ -111,6 +111,17 @@ def templateSimple(baseURL, workbook, jsonData):
 		}
 	)
 
+	bgGrey = workbook.add_format(
+		{
+			"bold": True,
+			"align": "center",
+			"bg_color": "gray",
+			"border": 1,
+			"font_color": "white",
+			"valign": "vcenter",
+		}
+	)
+
 	bold = workbook.add_format(
 		{
 			"bold": True,
@@ -235,7 +246,11 @@ def templateSimple(baseURL, workbook, jsonData):
                                         'criteria': '==',
                                         'value':    '"PASSED"',
                                         'format':   bgGreen})
-	worksheet.data_validation(f'E7:E{end-2}', {'validate' : 'list', 'source': ['PASSED', 'VULN']})
+	worksheet.conditional_format(f'E7:E{end-2}', {'type': 'cell',
+                                        'criteria': '==',
+                                        'value':    '"NOT APPLICABLE"',
+                                        'format':   bgGrey})
+	worksheet.data_validation(f'E7:E{end-2}', {'validate' : 'list', 'source': ['PASSED', 'VULN', 'NOT APPLICABLE']})
 	
 	return worksheet
 
@@ -340,6 +355,17 @@ def templateDetail(baseURL, workbook, jsonData, jsonTestCase):
 		}
 	)
 
+	bgGrey = workbook.add_format(
+		{
+			"bold": True,
+			"align": "center",
+			"bg_color": "gray",
+			"border": 1,
+			"font_color": "white",
+			"valign": "vcenter",
+		}
+	)
+
 	bold = workbook.add_format(
 		{
 			"bold": True,
@@ -428,7 +454,11 @@ def templateDetail(baseURL, workbook, jsonData, jsonTestCase):
                                         'criteria': '==',
                                         'value':    '"PASSED"',
                                         'format':   bgGreen})
-	worksheet.data_validation(f'D7:D{end-1}', {'validate' : 'list', 'source': ['PASSED', 'VULN']})
+	worksheet.conditional_format(f'D7:D{end-1}', {'type': 'cell',
+                                        'criteria': '==',
+                                        'value':    '"NOT APPLICABLE"',
+                                        'format':   bgGrey})
+	worksheet.data_validation(f'D7:D{end-1}', {'validate' : 'list', 'source': ['PASSED', 'VULN', 'NOT APPLICABLE']})
 	
 	return worksheet
 
