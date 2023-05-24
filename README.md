@@ -1,7 +1,10 @@
 # owasp-wstg-mapper
+**OSTGMapper** (Open Security Testing Guide Mapper). An automated security testing guide mapper based on pattern. Built to reduce time of manually mapping possible security tests for web applications. Currently support :
+- OWASP WSTG Test case. 
 
-## Install dependencies
+## Installation
 
+### Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
