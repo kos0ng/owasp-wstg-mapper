@@ -86,6 +86,7 @@ python3 main.py -i example/export.xml -t 2
 - [X] Add parsing mime type for file access
 - [X] Try catch on data that has blank response and request
 - [X] Remove files from detail mapper
+- [ ] Check reflected
 
 ## Features
 - TBU
