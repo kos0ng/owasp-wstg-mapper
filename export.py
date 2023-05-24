@@ -3,8 +3,6 @@ import json
 import os
 from datetime import datetime
 
-allEndpoints = ["Information Gathering", "Configuration and Deployment Management Testing"]
-
 def checkFile(path):
 	return os.path.isfile(path)
 
@@ -189,10 +187,7 @@ def templateSimple(baseURL, workbook, jsonData):
 						worksheet.write(f'A{end}', bodyTest, bodyHighCrit)
 					worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
 					worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
-					if(testCase['header'] in allEndpoints):
-						worksheet.write(f'D{end}', '*', body)
-					else:
-						worksheet.write(f'D{end}', '', body)
+					worksheet.write(f'D{end}', '', body)
 					worksheet.write(f'E{end}', '', body)
 					worksheet.write(f'F{end}', '', body)
 					worksheet.write(f'G{end}', '', body)
@@ -222,10 +217,7 @@ def templateSimple(baseURL, workbook, jsonData):
 					worksheet.write(f'A{end}', bodyTest, bodyHighCrit)
 				worksheet.write(f'B{end}', testCase['body'][bodyTest]['name'], body)
 				worksheet.write(f'C{end}', testCase['body'][bodyTest]['objectives'], body)
-				if(testCase['header'] in allEndpoints):
-					worksheet.write(f'D{end}', '*', body)
-				else:
-					worksheet.write(f'D{end}', '', body)
+				worksheet.write(f'D{end}', '', body)
 				worksheet.write(f'E{end}', '', body)
 				worksheet.write(f'F{end}', '', body)
 				worksheet.write(f'G{end}', '', body)
