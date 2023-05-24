@@ -239,10 +239,10 @@ def templateSimple(baseURL, workbook, jsonData):
 	
 	return worksheet
 
-def templateDetail(baseURL, workbook, jsonData):
+def templateDetail(baseURL, workbook, jsonData, jsonTestCase):
 	
-	fileTemplate = open("data/wstg_detail.json","r").read()
-	jsonTestCase = json.loads(fileTemplate)
+	# fileTemplate = open("data/wstg_detail.json","r").read()
+	# jsonTestCase = json.loads(fileTemplate)
 
 	worksheet = workbook.add_worksheet()
 
@@ -432,12 +432,12 @@ def templateDetail(baseURL, workbook, jsonData):
 	
 	return worksheet
 
-def export(baseURL, jsonData, filePath, reportType):
+def export(baseURL, data, jsonData, filePath, reportType):
 	workbook = xlsxwriter.Workbook(filePath)
 	if(reportType == 1):
 		worksheet = templateSimple(baseURL, workbook, jsonData)
 	elif(reportType == 2):
-		worksheet = templateDetail(baseURL, workbook, jsonData)
+		worksheet = templateDetail(baseURL, workbook, data, jsonData)
 	workbook.close()
 	print(f"Report written to {filePath}")
 

@@ -76,6 +76,7 @@ python3 main.py -i example/export.xml -t 2
 	- [X] Host
 	- [X] Endpoint
 - [X] Custom test case (add level / choose ID test case)
+- [ ] Add custom level
 
 ## Issue
 - [X] Make filter more precision, "invalid" should not match with "id" parameter , regex ?id= , &id=

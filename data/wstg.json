@@ -1,1151 +1,2115 @@
 {
-	"WSTG-IDNT-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "phpsessid", "token"],
-				"body_regex" : ["role", "id"]
-			},
-			"response" : {
-				"header_regex" : ["Authorization"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-IDNT-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "password", "confirm_password", "email", "register", "registration"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["registration", "success", "succesfull", "fail", "error"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-IDNT-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "confirm_password", "password", "email", "add", "new"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["registration", "success", "fail", "error"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-IDNT-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "token", "uid" ],
-				"body_regex" : ["username", "email"]
-			},
-			"response" : {
-				"header_regex" : ["Authorization", "Cookie"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-IDNT-05" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "update", "register", "add"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-ATHN-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "password", "confirm", "cpassword"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "password", "confirm"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "password", "login"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["success", "fail", "error", "wrong"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "password"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["success", "fail", "error", "wrong", "wait", "lock"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "token", "phpsessid", "session"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : ["Authorization", "token", "phpsessid", "session"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-05" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["remember"]
-			},
-			"response" : {
-				"header_regex" : ["remember"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-06" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : ["Authorization"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-07" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["password", "confirm", "cpassword"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["too short", "password length", "too weak"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-08" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["question", "answer"]
-			},
-			"response" : {
-				"header_regex" :  [],
-				"body_regex" : ["question", "answer"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-09" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["old_password", "current_password", "password"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["password different"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHN-10" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	
-	"WSTG-ATHZ-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["file", "src", "page", "source", "load", "preview"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHZ-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "token", "session", "sessid"],
-				"body_regex" : ["role"]
-			},
-			"response" : {
-				"header_regex" : ["Authorization", "token", "session", "sessid"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHZ-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "token", "session", "sesid"],
-				"body_regex" : ["role"]
-			},
-			"response" : {
-				"header_regex" : ["Authorization", "token", "session", "sessid"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ATHZ-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "token", "sessid", "session"],
-				"body_regex" : ["id", "uid", "username"]
-			},
-			"response" : {
-				"header_regex" : ["Authorization", "token", "session", "sessid"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-SESS-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["session", "token"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : ["session", "token"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["session", "token", "Cookie"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : ["Set-Cookie"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["session", "token", "Cookie"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : ["Set-Cookie"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["session", "token", "Cookie"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-05" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Cookie"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-06" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["logout"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-07" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "session", "token"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-08" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "session", "token"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-SESS-09" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["Authorization", "session", "token"],
-				"body_regex" : [""]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-INPV-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["search", "keyword", "id", "page"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-INPV-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["comment", "username", "name", "message", "content"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-INPV-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-05" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "password", "keyword", "search", "name", "id"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["sql","error"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-06" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["user", "username", "password", "pass", "search", "keyword", "searchlogin"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-07" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["document", "xml"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["XML"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-08" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["\\.shtml"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-09" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["user", "username", "pass", "password"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-10" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["mailbox", "mail", "content", "message"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-11" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["code", "cmd", "host", "eval", "exec", "calc"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-12" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["cmd", "host"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-13" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["username", "name"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-INPV-14" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-15" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-16" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-17" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["password","email","forgot_password"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-INPV-18" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["search", "keyword", "id", "page", "comment", "username", "name", "message", "content"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-INPV-19" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["endpoint", "host", "target", "url"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-ERRH-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-ERRH-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-CRYP-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CRYP-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CRYP-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["password", "nik", "email", "ktp"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CRYP-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-BUSL-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-05" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-06" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-07" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-08" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["file", "filename", "upload", "filetype"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-BUSL-09" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["file", "filename", "upload", "filetype"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-CLNT-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["search", "keyword", "id", "page", "comment", "username", "name", "message", "content"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-CLNT-02" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["eval"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-03" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["search", "keyword", "id", "page", "comment", "username", "name", "message", "content"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 1,
-		"target" : []
-	},
-	"WSTG-CLNT-04" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["redirect", "to", "url", "go"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-05" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["attr\\(\"style\"", "attr\\('style'"]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-06" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : ["createElement\\(\"script\""]
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-07" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : ["Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-08" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["\\.swf"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-09" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["*"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-10" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["socket"],
-				"body_regex" : ["socket"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-11" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-12" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["chat"],
-				"body_regex" : ["chat"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	},
-	"WSTG-CLNT-13" : {
-		"test" : {
-			"request" : {
-				"header_regex" : ["confidential", "secret", "\\.js"],
-				"body_regex" : []
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 1,
-		"reflected" : 0,
-		"target" : []
-	},
-
-	"WSTG-APIT-01" : {
-		"test" : {
-			"request" : {
-				"header_regex" : [],
-				"body_regex" : ["graphql", "graphiql", "query"]
-			},
-			"response" : {
-				"header_regex" : [],
-				"body_regex" : []
-			}
-		},
-		"files" : 0,
-		"reflected" : 0,
-		"target" : []
-	}
+  "WSTG-INFO-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Conduct Search Engine Discovery Reconnaissance for Information Leakage",
+    "severity": 1
+  },
+  "WSTG-INFO-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Fingerprint Web Server",
+    "severity": 1
+  },
+  "WSTG-INFO-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Review Webserver Metafiles for Information Leakage",
+    "severity": 1
+  },
+  "WSTG-INFO-04": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Enumerate Applications on Webserver",
+    "severity": 1
+  },
+  "WSTG-INFO-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Review Webpage Content for Information Leakage",
+    "severity": 1
+  },
+  "WSTG-INFO-06": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Identify Application Entry Points",
+    "severity": 1
+  },
+  "WSTG-INFO-07": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Map Execution Paths Through Application",
+    "severity": 1
+  },
+  "WSTG-INFO-08": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Fingerprint Web Application Framework",
+    "severity": 1
+  },
+  "WSTG-INFO-09": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Fingerprint Web Application",
+    "severity": 1
+  },
+  "WSTG-INFO-10": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Map Application Architecture",
+    "severity": 1
+  },
+  "WSTG-CONF-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Network Infrastructure Configuration",
+    "severity": 1
+  },
+  "WSTG-CONF-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Application Platform Configuration",
+    "severity": 1
+  },
+  "WSTG-CONF-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test File Extensions Handling for Sensitive Information",
+    "severity": 1
+  },
+  "WSTG-CONF-04": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Review Old Backup and Unreferenced Files for Sensitive Information",
+    "severity": 2
+  },
+  "WSTG-CONF-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Enumerate Infrastructure and Application Admin Interfaces",
+    "severity": 1
+  },
+  "WSTG-CONF-06": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test HTTP Methods",
+    "severity": 1
+  },
+  "WSTG-CONF-07": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test HTTP Strict Transport Security",
+    "severity": 1
+  },
+  "WSTG-CONF-08": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test RIA Cross Domain Policy",
+    "severity": 1
+  },
+  "WSTG-CONF-09": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test File Permission",
+    "severity": 1
+  },
+  "WSTG-CONF-10": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test for Subdomain Takeover",
+    "severity": 2
+  },
+  "WSTG-CONF-11": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Cloud Storage",
+    "severity": 1
+  },
+  "WSTG-CONF-12": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Content Security Policy",
+    "severity": 1
+  },
+  "WSTG-CONF-13": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Path Confusion",
+    "severity": 1
+  },
+  "WSTG-IDNT-01": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "phpsessid",
+          "token"
+        ],
+        "body_regex": [
+          "role",
+          "id"
+        ]
+      },
+      "response": {
+        "header_regex": [
+          "Authorization"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Role Definitions",
+    "severity": 2
+  },
+  "WSTG-IDNT-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "password",
+          "confirm_password",
+          "email",
+          "register",
+          "registration"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "registration",
+          "success",
+          "succesfull",
+          "fail",
+          "error"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test User Registration Process",
+    "severity": 1
+  },
+  "WSTG-IDNT-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "confirm_password",
+          "password",
+          "email",
+          "add",
+          "new"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "registration",
+          "success",
+          "fail",
+          "error"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Account Provisioning Process",
+    "severity": 2
+  },
+  "WSTG-IDNT-04": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "uid"
+        ],
+        "body_regex": [
+          "username",
+          "email"
+        ]
+      },
+      "response": {
+        "header_regex": [
+          "Authorization",
+          "Cookie"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for Account Enumeration and Guessable User Account",
+    "severity": 1
+  },
+  "WSTG-IDNT-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "update",
+          "register",
+          "add"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak or Unenforced Username Policy",
+    "severity": 1
+  },
+  "WSTG-ATHN-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "password",
+          "confirm",
+          "cpassword"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "password",
+          "confirm"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Credentials Transported over an Encrypted Channel",
+    "severity": 1
+  },
+  "WSTG-ATHN-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "password",
+          "login"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "success",
+          "fail",
+          "error",
+          "wrong"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Default Credentials",
+    "severity": 1
+  },
+  "WSTG-ATHN-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "password"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "success",
+          "fail",
+          "error",
+          "wrong",
+          "wait",
+          "lock"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak Lock Out Mechanism",
+    "severity": 1
+  },
+  "WSTG-ATHN-04": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "phpsessid",
+          "session"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "phpsessid",
+          "session"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Bypassing Authentication Schema",
+    "severity": 3
+  },
+  "WSTG-ATHN-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "remember"
+        ]
+      },
+      "response": {
+        "header_regex": [
+          "remember"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Vulnerable Remember Password",
+    "severity": 1
+  },
+  "WSTG-ATHN-06": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [
+          "Authorization"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Browser Cache Weaknesses",
+    "severity": 1
+  },
+  "WSTG-ATHN-07": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "password",
+          "confirm",
+          "cpassword"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "too short",
+          "password length",
+          "too weak"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak Password Policy",
+    "severity": 1
+  },
+  "WSTG-ATHN-08": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "question",
+          "answer"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "question",
+          "answer"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak Security Question Answer",
+    "severity": 1
+  },
+  "WSTG-ATHN-09": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "old_password",
+          "current_password",
+          "password"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "password different"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak Password Change or Reset Functionalities",
+    "severity": 3
+  },
+  "WSTG-ATHN-10": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing Multi-Factor Authentication (MFA)",
+    "severity": 1
+  },
+  "WSTG-ATHZ-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "file",
+          "src",
+          "page",
+          "source",
+          "load",
+          "preview"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing Directory Traversal File Include",
+    "severity": 2
+  },
+  "WSTG-ATHZ-02": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "session",
+          "sessid"
+        ],
+        "body_regex": [
+          "role"
+        ]
+      },
+      "response": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "session",
+          "sessid"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Bypassing Authorization Schema",
+    "severity": 2
+  },
+  "WSTG-ATHZ-03": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "session",
+          "sesid"
+        ],
+        "body_regex": [
+          "role"
+        ]
+      },
+      "response": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "session",
+          "sessid"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Privilege Escalation",
+    "severity": 2
+  },
+  "WSTG-ATHZ-04": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "sessid",
+          "session"
+        ],
+        "body_regex": [
+          "id",
+          "uid",
+          "username"
+        ]
+      },
+      "response": {
+        "header_regex": [
+          "Authorization",
+          "token",
+          "session",
+          "sessid"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Insecure Direct Object References",
+    "severity": 2
+  },
+  "WSTG-SESS-01": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "session",
+          "token"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [
+          "session",
+          "token"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Session Management Schema",
+    "severity": 1
+  },
+  "WSTG-SESS-02": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "session",
+          "token",
+          "Cookie"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [
+          "Set-Cookie"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Cookies Attributes",
+    "severity": 1
+  },
+  "WSTG-SESS-03": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "session",
+          "token",
+          "Cookie"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [
+          "Set-Cookie"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Session Fixation",
+    "severity": 1
+  },
+  "WSTG-SESS-04": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "session",
+          "token",
+          "Cookie"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Exposed Session Variables",
+    "severity": 1
+  },
+  "WSTG-SESS-05": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Cookie"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Cross Site Request Forgery",
+    "severity": 1
+  },
+  "WSTG-SESS-06": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "logout"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Logout Functionality",
+    "severity": 1
+  },
+  "WSTG-SESS-07": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "session",
+          "token"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing Session Timeout",
+    "severity": 1
+  },
+  "WSTG-SESS-08": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "session",
+          "token"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Session Puzzling",
+    "severity": 1
+  },
+  "WSTG-SESS-09": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "Authorization",
+          "session",
+          "token"
+        ],
+        "body_regex": [
+          ""
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Session Hijacking",
+    "severity": 1
+  },
+  "WSTG-INPV-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "search",
+          "keyword",
+          "id",
+          "page"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for Reflected Cross Site Scripting",
+    "severity": 1
+  },
+  "WSTG-INPV-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "comment",
+          "username",
+          "name",
+          "message",
+          "content"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for Stored Cross Site Scripting",
+    "severity": 2
+  },
+  "WSTG-INPV-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for HTTP Verb Tampering",
+    "severity": 1
+  },
+  "WSTG-INPV-04": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for HTTP Parameter Pollution",
+    "severity": 1
+  },
+  "WSTG-INPV-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "password",
+          "keyword",
+          "search",
+          "name",
+          "id"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "sql",
+          "error"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for SQL Injection",
+    "severity": 3
+  },
+  "WSTG-INPV-06": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "user",
+          "username",
+          "password",
+          "pass",
+          "search",
+          "keyword",
+          "searchlogin"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for LDAP Injection",
+    "severity": 3
+  },
+  "WSTG-INPV-07": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "document",
+          "xml"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "XML"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for XML Injection",
+    "severity": 2
+  },
+  "WSTG-INPV-08": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "\\.shtml"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for SSI Injection",
+    "severity": 3
+  },
+  "WSTG-INPV-09": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "user",
+          "username",
+          "pass",
+          "password"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for XPath Injection",
+    "severity": 2
+  },
+  "WSTG-INPV-10": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "mailbox",
+          "mail",
+          "content",
+          "message"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for IMAP SMTP Injection",
+    "severity": 1
+  },
+  "WSTG-INPV-11": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "code",
+          "cmd",
+          "host",
+          "eval",
+          "exec",
+          "calc"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Code Injection",
+    "severity": 3
+  },
+  "WSTG-INPV-12": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "cmd",
+          "host"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Command Injection",
+    "severity": 3
+  },
+  "WSTG-INPV-13": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "username",
+          "name"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for Buffer Overflow",
+    "severity": 2
+  },
+  "WSTG-INPV-14": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Format String Injection",
+    "severity": 2
+  },
+  "WSTG-INPV-15": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Incubated Vulnerability",
+    "severity": 2
+  },
+  "WSTG-INPV-16": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for HTTP Splitting Smuggling",
+    "severity": 2
+  },
+  "WSTG-INPV-17": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "password",
+          "email",
+          "forgot_password"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for HTTP Incoming Requests",
+    "severity": 1
+  },
+  "WSTG-INPV-18": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "search",
+          "keyword",
+          "id",
+          "page",
+          "comment",
+          "username",
+          "name",
+          "message",
+          "content"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for Host Header Injection",
+    "severity": 2
+  },
+  "WSTG-INPV-19": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "endpoint",
+          "host",
+          "target",
+          "url"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Server-side Template Injection",
+    "severity": 3
+  },
+  "WSTG-ERRH-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Improper Error Handling",
+    "severity": 1
+  },
+  "WSTG-ERRH-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Stack Traces",
+    "severity": 1
+  },
+  "WSTG-CRYP-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak Transport Layer Security",
+    "severity": 1
+  },
+  "WSTG-CRYP-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Padding Oracle",
+    "severity": 1
+  },
+  "WSTG-CRYP-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "password",
+          "nik",
+          "email",
+          "ktp"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Sensitive Information Sent via Unencrypted Channels",
+    "severity": 1
+  },
+  "WSTG-CRYP-04": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Weak Encryption",
+    "severity": 1
+  },
+  "WSTG-BUSL-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Business Logic Data Validation",
+    "severity": 2
+  },
+  "WSTG-BUSL-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Ability to Forge Requests",
+    "severity": 1
+  },
+  "WSTG-BUSL-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Integrity Checks",
+    "severity": 1
+  },
+  "WSTG-BUSL-04": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test for Process Timing",
+    "severity": 1
+  },
+  "WSTG-BUSL-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Number of Times a Function Can Be Used Limits",
+    "severity": 1
+  },
+  "WSTG-BUSL-06": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for the Circumvention of Work Flows",
+    "severity": 1
+  },
+  "WSTG-BUSL-07": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Defenses Against Application Misuse",
+    "severity": 1
+  },
+  "WSTG-BUSL-08": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "file",
+          "filename",
+          "upload",
+          "filetype"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Upload of Unexpected File Types",
+    "severity": 1
+  },
+  "WSTG-BUSL-09": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "file",
+          "filename",
+          "upload",
+          "filetype"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Test Upload of Malicious Files",
+    "severity": 2
+  },
+  "WSTG-CLNT-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "search",
+          "keyword",
+          "id",
+          "page",
+          "comment",
+          "username",
+          "name",
+          "message",
+          "content"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for DOM-Based Cross Site Scripting",
+    "severity": 2
+  },
+  "WSTG-CLNT-02": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "eval"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for JavaScript Execution",
+    "severity": 1
+  },
+  "WSTG-CLNT-03": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "search",
+          "keyword",
+          "id",
+          "page",
+          "comment",
+          "username",
+          "name",
+          "message",
+          "content"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 1,
+    "target": [],
+    "name": "Testing for HTML Injection",
+    "severity": 1
+  },
+  "WSTG-CLNT-04": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "redirect",
+          "to",
+          "url",
+          "go"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Client-side URL Redirect",
+    "severity": 1
+  },
+  "WSTG-CLNT-05": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "attr\\(\"style\"",
+          "attr\\('style'"
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for CSS Injection",
+    "severity": 1
+  },
+  "WSTG-CLNT-06": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": [
+          "createElement\\(\"script\""
+        ]
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Client-side Resource Manipulation",
+    "severity": 1
+  },
+  "WSTG-CLNT-07": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [
+          "Access-Control-Allow-Origin",
+          "Access-Control-Allow-Credentials"
+        ],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing Cross Origin Resource Sharing",
+    "severity": 1
+  },
+  "WSTG-CLNT-08": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "\\.swf"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Cross Site Flashing",
+    "severity": 1
+  },
+  "WSTG-CLNT-09": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "*"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Clickjacking",
+    "severity": 1
+  },
+  "WSTG-CLNT-10": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "socket"
+        ],
+        "body_regex": [
+          "socket"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing WebSockets",
+    "severity": 1
+  },
+  "WSTG-CLNT-11": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing Web Messaging",
+    "severity": 1
+  },
+  "WSTG-CLNT-12": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "chat"
+        ],
+        "body_regex": [
+          "chat"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing Browser Storage",
+    "severity": 1
+  },
+  "WSTG-CLNT-13": {
+    "test": {
+      "request": {
+        "header_regex": [
+          "confidential",
+          "secret",
+          "\\.js"
+        ],
+        "body_regex": []
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 1,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing for Cross Site Script Inclusion",
+    "severity": 1
+  },
+  "WSTG-APIT-01": {
+    "test": {
+      "request": {
+        "header_regex": [],
+        "body_regex": [
+          "graphql",
+          "graphiql",
+          "query"
+        ]
+      },
+      "response": {
+        "header_regex": [],
+        "body_regex": []
+      }
+    },
+    "files": 0,
+    "reflected": 0,
+    "target": [],
+    "name": "Testing GraphQL",
+    "severity": 2
+  }
 }

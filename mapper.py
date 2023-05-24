@@ -183,7 +183,4 @@ def mapper(data, filePath, reportType, level):
 			data[i] = assignDetail(jsonData, data[i], i)
 
 	baseURL = getBaseURL(data)
-	if(reportType == 1):
-		export(baseURL, jsonData, filePath, reportType)
-	elif(reportType == 2):
-		export(baseURL, data, filePath, reportType)
+	export(baseURL, data, jsonData, filePath, reportType)
