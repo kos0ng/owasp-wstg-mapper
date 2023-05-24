@@ -1,4 +1,4 @@
-# owasp-wstg-mapper
+# OSTG Mapper
 **OSTGMapper** (Open Security Testing Guide Mapper). An automated security testing guide mapper based on pattern. Built to reduce time of manually mapping possible security tests for web applications. Currently support :
 - OWASP WSTG Test case. 
 
