@@ -154,12 +154,12 @@ def parseFile(data):
 if __name__ == "__main__":
 	
 	listURL = []
-	parser = argparse.ArgumentParser(description='Mapper description')
-	parser.add_argument("-i", "--input", type=str)
-	parser.add_argument("-o", "--output", type=str)
-	parser.add_argument("-t", "--type", type=int)
-	parser.add_argument("-f", "--filter", type=str)
-	parser.add_argument("-l", "--level", type=int)
+	parser = argparse.ArgumentParser(description='OSTGMapper, an automated security testing guide mapper based on pattern. Built to reduce time of manually mapping possible security tests for web applications. Currently support OWASP WSTG v4.2.')
+	parser.add_argument("-i", "--input", type=str, help="Exported XML file from burpsuite")
+	parser.add_argument("-f", "--filter", type=str, help="Filter URL base on string")
+	parser.add_argument("-t", "--type", type=int, help="Report type you want to choose")
+	parser.add_argument("-l", "--level", type=int, help="List of test cases you want to map")
+	parser.add_argument("-o", "--output", type=str, help="Filename for the report (output)")
 	args = parser.parse_args()
 
 	listType = [1, 2]
