@@ -4,6 +4,7 @@ import base64
 import re
 import os
 import magic
+import glob
 from uuid import UUID
 from mapper import mapper
 from datetime import datetime
@@ -162,7 +163,10 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	listType = [1, 2]
-	listLevel = [0, 1]
+	listLevel = [0]
+	for i in glob.glob("level/level[0-9].data"):
+		level = i.split("level/level")[1].split(".data")[0]
+		listLevel.append(int(level))
 
 	if(args.type == None):
 		args.type = 1
