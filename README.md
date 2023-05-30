@@ -90,15 +90,18 @@ python3 main.py -i example/export.xml -t 2
 ## Features
 - Can be used with burp community edition (free)
 - Filter URL/Endpoint
-- Adjustable list of test case
-- Adjustable pattern
+- Adjustable list of test case (level(
+- Adjustable pattern of test
 - Flexible report type
 - Included possible severity on each test case
 - Universal report file (excel)
 - Easy-to-fill report
-- Support json and text request
+- Support json and form encoded request
 - Possible to exclude files url (blacklist)
 - Can check reflected value on response
+- Pattern matching using regex
+- Sanitized url to remove redundancy
+- Each files in request and response converted to its mime type for further analyzing process
 
 ## Example Worflow
 
@@ -172,7 +175,3 @@ http://localhost:3000
 - [X] Move overwrite first 
 - [X] Ensure level in format level[0-9]
 - [X] Ensure level in list wstg id
-
-
-
-
