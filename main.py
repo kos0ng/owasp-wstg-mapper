@@ -8,6 +8,9 @@ import glob
 from uuid import UUID
 from mapper import mapper
 from datetime import datetime
+import time
+from requests_toolbelt.multipart import decoder
+
 
 def isValidUUID(uuid_to_test, version=4):
     try:
@@ -59,8 +62,10 @@ def parseXML(xmlFile, filterUrl = None):
     data = {}
     tree = ET.parse(xmlFile)
     root = tree.getroot()
+    count = 0
     
     for item in root:
+    	count += 1
     	url = item.find('url').text
     	method = item.find('method').text
     	request = item.find('request').text
@@ -75,14 +80,19 @@ def parseXML(xmlFile, filterUrl = None):
 
     			if(request == None):
     				request = ""
-    				data[key]['request'] = ''
+    				data[key]['request'] =  {'header' :'', 'body' : ''}
     			else:
-    				request = base64.b64decode(request).decode()
-    				data[key]['request'] = parseHTTP(request)
+    				try:
+    					request = base64.b64decode(request).decode()
+    					data[key]['request'] = parseHTTP(request)
+    					
+    				except Exception as e:
+    					request = base64.b64decode(request)
+    					data[key]['request'] = parseMultiPart(request)
     	
     			if(response == None):
     				response =  ""
-    				data[key]['response'] = ''
+    				data[key]['response'] =  {'header' :'', 'body' : ''}
     			else:
     				try:
     					response = base64.b64decode(response).decode()
@@ -90,7 +100,6 @@ def parseXML(xmlFile, filterUrl = None):
     				except Exception as e:
     					response = base64.b64decode(response)
     					data[key]['response'] = parseFile(response)
-    			
     			data[key]['testCases'] = []
     	else:
     		
@@ -101,12 +110,16 @@ def parseXML(xmlFile, filterUrl = None):
     			request = ""
     			data[key]['request'] = ''
     		else:
-    			request = base64.b64decode(request).decode()
-    			data[key]['request'] = parseHTTP(request)
+    			try:
+    				request = base64.b64decode(request).decode()
+    				data[key]['request'] = parseHTTP(request)
+    			except Exception as e:
+    				request = base64.b64decode(request)
+    				data[key]['request'] = parseMultiPart(request)
     	
     		if(response == None):
     			response =  ""
-    			data[key]['response'] = ''
+    			data[key]['response'] =  {'header' :'', 'body' : ''}
     		else:
     			try:
     				response = base64.b64decode(response).decode()
@@ -116,18 +129,18 @@ def parseXML(xmlFile, filterUrl = None):
     				data[key]['response'] = parseFile(response)
     		data[key]['testCases'] = []
     	
+    print(f"total traffic : {count}")
     return data
 
 def parseHeader(header):
 	data = {}
 
-	for i in header:
-		tmp = i.split(": ")
+	for i in header.split(b"\r\n"):
+		tmp = i.split(b": ")
 		if(len(tmp)>1):
-			data[tmp[0]] = tmp[1]
+			data[tmp[0].decode()] = tmp[1].decode()
 		else:
 			data['url'] = tmp[0]
-
 	return data
 
 def parseHTTP(data):
@@ -145,11 +158,26 @@ def parseFile(data):
 	header = tmp[0]
 	body = tmp[1]
 	data = {
-		"header" : header,
+		"header" : header.decode(),
 		"body" : magic.from_buffer(body[:2048])
 	}
 	return data
 
+def parseMultiPart(data):
+	tmp = data.split(b"\r\n\r\n-")
+	if(len(tmp) == 1):
+		return {'header' :'', 'body' : ''}
+	header = parseHeader(tmp[0])
+	body = tmp[1]
+	multipart_data = decoder.MultipartDecoder(body, header['Content-Type'])
+	resp = ""
+	for i in multipart_data.parts:
+		resp += f"filetype={magic.from_buffer(i.content[:2048])}&"
+	data = {
+		"header" : tmp[0].decode(),
+		"body" : resp
+	}
+	return data
 
 if __name__ == "__main__":
 	
@@ -195,18 +223,27 @@ if __name__ == "__main__":
 			if(checkFile(filePath)):
 				option = input(f"Replace file {filePath} ? (Y/N) : ")
 				if(option.upper() == "Y"):
+					start = time.time()
 					data = parseXML(args.input, args.filter)
 					mapper(data, filePath, args.type, args.level)
+					end = time.time()
+					print(f"Process time : {round(end-start,2)} second")
 				elif(option.upper() == "N"):
+					start = time.time()
 					arrFilePath = filePath.split(".")
 					filePath = arrFilePath[0] + "_2." + arrFilePath[1]
 					data = parseXML(args.input, args.filter)
 					mapper(data, filePath, args.type, args.level)
+					end = time.time()
+					print(f"Process time : {round(end-start,2)} second")
 				else:
 					print("Option unknown!")
 			else:
+				start = time.time()
 				data = parseXML(args.input, args.filter)
 				mapper(data, filePath, args.type, args.level)
+				end = time.time()
+				print(f"Process time : {round(end-start,2)} second")
 		else:
 			print(f"File \"{args.input}\" not found!")
 	else:
