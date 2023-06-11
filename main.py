@@ -128,7 +128,6 @@ def parseXML(xmlFile, filterUrl = None):
     				response = base64.b64decode(response)
     				data[key]['response'] = parseFile(response)
     		data[key]['testCases'] = []
-    	
     print(f"total traffic : {count}")
     return data
 

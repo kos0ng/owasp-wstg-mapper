@@ -811,7 +811,14 @@
   "WSTG-ATHZ-01": {
     "test": {
       "request": {
-        "header_regex": [],
+        "header_regex": [
+          "file",
+          "src",
+          "page",
+          "source",
+          "load",
+          "preview"
+        ],
         "body_regex": [
           "file",
           "src",
@@ -921,6 +928,7 @@
     "name": "Testing for Insecure Direct Object References",
     "severity": 2
   },
+  
   "WSTG-SESS-01": {
     "test": {
       "request": {

@@ -179,8 +179,21 @@ def mapper(data, filePath, reportType, level):
 		for i in jsonData:
 			jsonData[i] = assignSimple(jsonData[i], data)
 	elif(reportType == 2):
+		cnt = 0
+		allEndpoint = []
+		for i in jsonData:
+			if(cnt < 23):
+				allEndpoint.append(i)
+				cnt += 1
+			else:
+				break
+		for i in allEndpoint:
+			del jsonData[i]
 		for i in data:
 			data[i] = assignDetail(jsonData, data[i], i)
+		data['*'] = {}
+		data['*']['testCases'] = allEndpoint
 
+	jsonData = json.loads(f)
 	baseURL = getBaseURL(data)
 	export(baseURL, data, jsonData, filePath, reportType)

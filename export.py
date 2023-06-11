@@ -248,9 +248,6 @@ def templateSimple(baseURL, workbook, jsonData):
 
 def templateDetail(baseURL, workbook, jsonData, jsonTestCase):
 	
-	# fileTemplate = open("data/wstg_detail.json","r").read()
-	# jsonTestCase = json.loads(fileTemplate)
-
 	worksheet = workbook.add_worksheet()
 
 	worksheet.freeze_panes(0, 2)
