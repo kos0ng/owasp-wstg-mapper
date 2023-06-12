@@ -23,8 +23,13 @@ def checkFile(path):
 	return os.path.isfile(path)
 
 def formatURL(url):
-	tmp = url.split("/")
-	regexURL = r"[\?]?([\w]+)=([\w-]+)"
+	tmp2 = url.split("/")
+	tmp3 = tmp2[-1].split("?")
+	if(tmp3[0] == '' and len(tmp3) == 2):
+		tmp = tmp2[:-1] + [tmp3[1]]
+	else:
+		tmp = tmp2[:-1] + tmp3
+	regexURL = r"[\?]?([\w]+)=([\w-]+)?"
 	partURL = []
 	for i in tmp:
 		result = re.findall(regexURL, i)
@@ -45,6 +50,7 @@ def formatURL(url):
 			formatted.append("<value>")
 		else:
 			formatted.append(i)
+	# print(url, formatted)
 	return "/".join(formatted)
 
 def normalizeURL(url):

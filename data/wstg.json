@@ -1208,14 +1208,26 @@
   "WSTG-INPV-05": {
     "test": {
       "request": {
-        "header_regex": [],
+        "header_regex": [
+          "<value>"
+        ],
         "body_regex": [
           "username",
+          "email",
           "password",
           "keyword",
           "search",
           "name",
-          "id"
+          "id",
+          "q",
+          "imageUrl",
+          "ProductId",
+          "d",
+          "fullName",
+          "paymentId",
+          "UserId",
+          "query",
+          "current"
         ]
       },
       "response": {

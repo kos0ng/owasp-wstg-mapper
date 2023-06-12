@@ -4,7 +4,7 @@ from export import *
 
 blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico"]
 
-regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[\/]({})/([\w-]+)"]
+regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[/]({})/([\w-]+)", "(?i)[/]({})", "(?i)[?&]?({})=([\w-]+)", "(?i)[?&]?([\w-]+)=({})"]
 regexBody = ["(?i)[\"\']{}[\"\'][ ]?:([ \"\w-]+)", "(?i)[\?\&]?({})=([\w-]+)",]
 regexResponse = ["(?i){}[ ]?:([ \'\"\w-]+)"]
 
@@ -55,15 +55,35 @@ def assignSimple(testData, data):
 	request = testCase['request']
 	response = testCase['response']
 	
-	for i in request['header_regex']:
-		for j in keyData:
+	chk = []
+	for j in keyData:
+		check = False
+		for i in request['header_regex']:
 			for k in regexHeader:
-				x = re.search(k.format(i), data[j]['request']['header'])
+				x = re.search(k.format(i), j)
 				if(x is not None):
 					testData['target'].append(j)
-					keyData.remove(j)
-	for i in request['body_regex']:
-		for j in keyData:
+					chk.append(j)
+					check = True
+					break
+				else:
+					x = re.search(k.format(i), data[j]['request']['header'])
+					if(x is not None):
+						testData['target'].append(j)
+						chk.append(j)
+						check = True
+						break
+			if(check):
+				break
+
+
+	for i in chk:
+		keyData.remove(i)
+	chk = []
+
+	for j in keyData:
+		check = False
+		for i in request['body_regex']:
 			if(i == "*"):
 				testData['target'].append("*")
 				return testData
@@ -71,28 +91,54 @@ def assignSimple(testData, data):
 				x = re.search(k.format(i), data[j]['request']['body'])
 				if(x is not None):
 					testData['target'].append(j)
-					keyData.remove(j)			
+					chk.append(j)
+					check = True
+					break
+			if(check):
+				break
 	
-	for i in response['header_regex']:
-		for j in keyData:
+	for i in chk:
+		keyData.remove(i)
+	chk = []
+
+	for j in keyData:
+		check = False
+		for i in response['header_regex']:
 			for k in regexResponse:
 				x = re.search(k.format(i), data[j]['response']['header'])
 				if(x is not None):
 					testData['target'].append(j)
-					keyData.remove(j)
-	for i in response['body_regex']:
-		for j in keyData:
+					chk.append(j)
+					check = True
+					break
+		if(check):
+			break
+	
+	for i in chk:
+		keyData.remove(i)
+	chk = []
+
+	for j in keyData:
+		check = False
+		for i in response['body_regex']:
 			x = re.search(i, data[j]['response']['header'])
 			if(x is not None):
 				testData['target'].append(j)
-				keyData.remove(j)
+				chk.append(j)
+				check = True
+				break
+		if(check):
+			break
 	
+	for i in chk:
+		keyData.remove(i)
+	chk = []
+
 	if(testData["reflected"] == 1) :
 		for j in keyData:
 			resultCheck = checkReflected(data[j]['request'], data[j]['response'])
 			if(resultCheck):
 				testData['target'].append(j)
-				keyData.remove(j)
 
 	return testData
 
@@ -109,11 +155,17 @@ def assignDetail(testData, data, url):
 		check = True
 		for j in testHeaderRequest:
 			for k in regexHeader:
-				x = re.search(k.format(j), data['request']['header'])
+				x = re.search(k.format(j), url)
 				if(x is not None):
 					data['testCases'].append(i)
 					check = False
 					break
+				else:
+					x = re.search(k.format(j), data['request']['header'])
+					if(x is not None):
+						data['testCases'].append(i)
+						check = False
+						break
 			if(check == False):
 				break
 		if(check):
@@ -170,7 +222,10 @@ def filterTest(data, dataLevel):
 def mapper(data, filePath, reportType, level):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
-
+	
+	# for i in data:
+	# 	print(i)
+	
 	if(level != 0):
 		dataLevel = open(f"level/level{level}.data","r").read().split("\n") # check list level on main.py
 		jsonData = filterTest(jsonData, dataLevel)
@@ -180,20 +235,23 @@ def mapper(data, filePath, reportType, level):
 			jsonData[i] = assignSimple(jsonData[i], data)
 	elif(reportType == 2):
 		cnt = 0
-		allEndpoint = []
-		for i in jsonData:
-			if(cnt < 23):
-				allEndpoint.append(i)
-				cnt += 1
-			else:
-				break
-		for i in allEndpoint:
-			del jsonData[i]
-		for i in data:
-			data[i] = assignDetail(jsonData, data[i], i)
-		data['*'] = {}
-		data['*']['testCases'] = allEndpoint
-
-	jsonData = json.loads(f)
+		if(level == 0 or level == 1):
+			allEndpoint = []
+			for i in jsonData:
+				if(cnt < 23):
+					allEndpoint.append(i)
+					cnt += 1
+				else:
+					break
+			for i in allEndpoint:
+				del jsonData[i]
+			for i in data:
+				data[i] = assignDetail(jsonData, data[i], i)
+			data['*'] = {}
+			data['*']['testCases'] = allEndpoint
+			jsonData = json.loads(f)
+		else:
+			for i in data:
+				data[i] = assignDetail(jsonData, data[i], i)
 	baseURL = getBaseURL(data)
 	export(baseURL, data, jsonData, filePath, reportType)
