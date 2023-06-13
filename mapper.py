@@ -132,14 +132,18 @@ def assignSimple(testData, data):
 	
 	for i in chk:
 		keyData.remove(i)
-	chk = []
 
+	fix = []
 	if(testData["reflected"] == 1) :
-		for j in keyData:
+		for j in testData['target']:
 			resultCheck = checkReflected(data[j]['request'], data[j]['response'])
 			if(resultCheck):
-				testData['target'].append(j)
+				fix.append(j)
 
+	for i in fix:
+		if(i not in testData['target']):
+			testData['target'].remove(i)
+	
 	return testData
 
 def assignDetail(testData, data, url):	
@@ -198,11 +202,11 @@ def assignDetail(testData, data, url):
 					data['testCases'].append(i)
 					check = False
 					break
-		if(check):
+		if(check == False):
 			if(testData[i]['reflected'] == 1):
 				resultCheck = checkReflected(data['request'], data['response'])
-				if(resultCheck):
-					data['testCases'].append(i)
+				if(resultCheck == False):
+					data['testCases'].remove(i)
 	return data
 
 def getBaseURL(data):

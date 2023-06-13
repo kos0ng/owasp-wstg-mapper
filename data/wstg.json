@@ -478,11 +478,6 @@
       "response": {
         "header_regex": [],
         "body_regex": [
-          "registration",
-          "success",
-          "succesfull",
-          "fail",
-          "error"
         ]
       }
     },
@@ -508,10 +503,6 @@
       "response": {
         "header_regex": [],
         "body_regex": [
-          "registration",
-          "success",
-          "fail",
-          "error"
         ]
       }
     },
@@ -525,19 +516,15 @@
     "test": {
       "request": {
         "header_regex": [
-          "Authorization",
-          "token",
-          "uid"
         ],
         "body_regex": [
           "username",
+          "userid",
           "email"
         ]
       },
       "response": {
         "header_regex": [
-          "Authorization",
-          "Cookie"
         ],
         "body_regex": []
       }
@@ -609,10 +596,6 @@
       "response": {
         "header_regex": [],
         "body_regex": [
-          "success",
-          "fail",
-          "error",
-          "wrong"
         ]
       }
     },
@@ -625,21 +608,16 @@
   "WSTG-ATHN-03": {
     "test": {
       "request": {
-        "header_regex": [],
+        "header_regex": [
+          "logout"
+        ],
         "body_regex": [
-          "username",
-          "password"
+          "logout"
         ]
       },
       "response": {
         "header_regex": [],
         "body_regex": [
-          "success",
-          "fail",
-          "error",
-          "wrong",
-          "wait",
-          "lock"
         ]
       }
     },
@@ -794,7 +772,10 @@
       "request": {
         "header_regex": [],
         "body_regex": [
-          "*"
+          "login",
+          "username",
+          "password",
+          "token"
         ]
       },
       "response": {
@@ -1413,7 +1394,7 @@
       }
     },
     "files": 0,
-    "reflected": 1,
+    "reflected": 0,
     "target": [],
     "name": "Testing for Buffer Overflow",
     "severity": 2
@@ -1423,7 +1404,8 @@
       "request": {
         "header_regex": [],
         "body_regex": [
-          "*"
+          "%p",
+          "%x"
         ]
       },
       "response": {
@@ -1499,17 +1481,17 @@
   "WSTG-INPV-18": {
     "test": {
       "request": {
-        "header_regex": [],
+        "header_regex": [
+          "forgot",
+          "forgot_password",
+          "reset",
+          "reset_password"
+        ],
         "body_regex": [
-          "search",
-          "keyword",
-          "id",
-          "page",
-          "comment",
-          "username",
-          "name",
-          "message",
-          "content"
+          "forgot",
+          "forgot_password",
+          "reset",
+          "reset_password"
         ]
       },
       "response": {
@@ -1518,7 +1500,7 @@
       }
     },
     "files": 0,
-    "reflected": 1,
+    "reflected": 0,
     "target": [],
     "name": "Testing for Host Header Injection",
     "severity": 2
@@ -1607,7 +1589,7 @@
       "request": {
         "header_regex": [],
         "body_regex": [
-          "*"
+          "key"
         ]
       },
       "response": {
@@ -1648,7 +1630,7 @@
       "request": {
         "header_regex": [],
         "body_regex": [
-          "*"
+          "key"
         ]
       },
       "response": {
@@ -1705,12 +1687,13 @@
       "request": {
         "header_regex": [],
         "body_regex": [
-          "*"
         ]
       },
       "response": {
         "header_regex": [],
-        "body_regex": []
+        "body_regex": [
+          "total"
+        ]
       }
     },
     "files": 0,
@@ -1743,7 +1726,11 @@
       "request": {
         "header_regex": [],
         "body_regex": [
-          "*"
+          "otp",
+          "username",
+          "password",
+          "sms",
+          "email"
         ]
       },
       "response": {
