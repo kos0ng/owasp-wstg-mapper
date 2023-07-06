@@ -4,7 +4,7 @@ from export import *
 
 blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico"]
 
-regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[/]({})/([\w-]+)", "(?i)[/]({})", "(?i)[?&]?({})=([\w-]+)", "(?i)[?&]?([\w-]+)=({})"]
+regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[/]({})/([\w-]+)", "(?i)[/]({})$", "(?i)[?&]?({})=([\w-]+)", "(?i)[?&]?([\w-]+)=({})"]
 regexBody = ["(?i)[\"\']{}[\"\'][ ]?:([ \"\w-]+)", "(?i)[\?\&]?({})=([\w-]+)",]
 regexResponse = ["(?i){}[ ]?:([ \'\"\w-]+)"]
 
@@ -61,6 +61,7 @@ def assignSimple(testData, data):
 		for i in request['header_regex']:
 			for k in regexHeader:
 				x = re.search(k.format(i), j)
+				# print("header",x, k.format(i),j)
 				if(x is not None):
 					testData['target'].append(j)
 					chk.append(j)
@@ -89,6 +90,7 @@ def assignSimple(testData, data):
 				return testData
 			for k in regexBody:
 				x = re.search(k.format(i), data[j]['request']['body'])
+				# print("body",x,k.format(i),data[j]['request']['body'])
 				if(x is not None):
 					testData['target'].append(j)
 					chk.append(j)

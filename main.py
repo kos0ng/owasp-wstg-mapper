@@ -79,9 +79,11 @@ def parseXML(xmlFile, filterUrl = None):
 
     	url = normalizeURL(url)
 
+    	key = f"{method} {url}"
+
     	if(filterUrl != None):
-    		if(filterUrl in url):
-    			key = f"{method} {url}"
+    		if(filterUrl in key):
+    			
 	    		data[key] = {}
 
     			if(request == None):
@@ -108,8 +110,6 @@ def parseXML(xmlFile, filterUrl = None):
     					data[key]['response'] = parseFile(response)
     			data[key]['testCases'] = []
     	else:
-    		
-    		key = f"{method} {url}"
 	    	data[key] = {}
 
     		if(request == None):
@@ -176,8 +176,11 @@ def parseMultiPart(data):
 	body = tmp[1]
 	multipart_data = decoder.MultipartDecoder(body, header['Content-Type'])
 	resp = ""
-	for i in multipart_data.parts:
-		resp += f"filetype={magic.from_buffer(i.content[:2048])}&"
+	if(len(multipart_data.parts) ==  1):
+		resp += f"filetype={magic.from_buffer(multipart_data.parts[0].content[:2048])}"
+	else:
+		for i in multipart_data.parts:
+			resp += f"filetype={magic.from_buffer(i.content[:2048])}&"
 	data = {
 		"header" : tmp[0].decode(),
 		"body" : resp
@@ -189,7 +192,7 @@ if __name__ == "__main__":
 	listURL = []
 	parser = argparse.ArgumentParser(description='OSTGMapper, an automated security testing guide mapper based on pattern. Built to reduce time of manually mapping possible security tests for web applications. Currently support OWASP WSTG v4.2.')
 	parser.add_argument("-i", "--input", type=str, help="Exported XML file from burpsuite")
-	parser.add_argument("-f", "--filter", type=str, help="Filter URL base on string")
+	parser.add_argument("-f", "--filter", type=str, help="Filter URL based on string")
 	parser.add_argument("-t", "--type", type=int, help="Report type you want to choose")
 	parser.add_argument("-l", "--level", type=int, help="List of test cases you want to map")
 	parser.add_argument("-o", "--output", type=str, help="Filename for the report (output)")

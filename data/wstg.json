@@ -679,13 +679,12 @@
     "test": {
       "request": {
         "header_regex": [
-          "Authorization"
+          "cache"
         ],
         "body_regex": []
       },
       "response": {
         "header_regex": [
-          "Authorization"
         ],
         "body_regex": []
       }
@@ -798,7 +797,8 @@
           "page",
           "source",
           "load",
-          "preview"
+          "preview",
+          "file-upload"
         ],
         "body_regex": [
           "file",
@@ -1089,7 +1089,6 @@
           "token"
         ],
         "body_regex": [
-          ""
         ]
       },
       "response": {
@@ -1208,7 +1207,8 @@
           "paymentId",
           "UserId",
           "query",
-          "current"
+          "current",
+          "userid"
         ]
       },
       "response": {
