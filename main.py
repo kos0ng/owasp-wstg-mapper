@@ -201,7 +201,10 @@ if __name__ == "__main__":
 	listType = [1, 2]
 	listLevel = [0]
 	for i in glob.glob("level/level[0-9].data"):
-		level = i.split("level/level")[1].split(".data")[0]
+		try:
+			level = i.split("level/level")[1].split(".data")[0]
+		except Exception as e:
+			level = i.split("level\\level")[1].split(".data")[0]
 		listLevel.append(int(level))
 
 	if(args.type == None):
@@ -255,4 +258,5 @@ if __name__ == "__main__":
 		else:
 			print(f"File \"{args.input}\" not found!")
 	else:
+		print("\nargument -i or --input is mandatory\n")
 		parser.print_help()
