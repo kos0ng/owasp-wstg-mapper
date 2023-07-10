@@ -2,7 +2,7 @@ import json
 import re
 from export import *
 
-blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico"]
+blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico", ".woff", ".woff2"]
 
 regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[/]({})/([\w-]+)", "(?i)[/]({})$", "(?i)[?&]?({})=([\w-]+)", "(?i)[?&]?([\w-]+)=({})"]
 regexBody = ["(?i)[\"\']{}[\"\'][ ]?:([ \"\w-]+)", "(?i)[\?\&]?({})=([\w-]+)",]
@@ -77,7 +77,6 @@ def assignSimple(testData, data):
 			if(check):
 				break
 
-
 	for i in chk:
 		keyData.remove(i)
 	chk = []
@@ -101,6 +100,7 @@ def assignSimple(testData, data):
 	
 	for i in chk:
 		keyData.remove(i)
+	
 	chk = []
 
 	for j in keyData:
@@ -113,11 +113,12 @@ def assignSimple(testData, data):
 					chk.append(j)
 					check = True
 					break
-		if(check):
-			break
+			if(check):
+				break
 	
 	for i in chk:
 		keyData.remove(i)
+	
 	chk = []
 
 	for j in keyData:
@@ -141,11 +142,8 @@ def assignSimple(testData, data):
 			resultCheck = checkReflected(data[j]['request'], data[j]['response'])
 			if(resultCheck):
 				fix.append(j)
-
-	for i in fix:
-		if(i not in testData['target']):
-			testData['target'].remove(i)
-	
+		testData['target'] = fix
+			
 	return testData
 
 def assignDetail(testData, data, url):	
