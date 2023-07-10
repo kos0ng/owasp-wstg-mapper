@@ -10,8 +10,7 @@ regexResponse = ["(?i){}[ ]?:([ \'\"\w-]+)"]
 
 def checkReflected(request, response):
 	result = []
-	# print(request, response)
-	print(request['body'])
+	# print(request['body'])
 	for i in regexHeader:
 		tmp = re.findall(i.format("([\w]+)"), request['header'].split("\r\n")[0])
 		for j in tmp:
@@ -25,7 +24,7 @@ def checkReflected(request, response):
 			val = j[1]
 			if(val not in result):
 				result.append(val)
-	print(result)
+	# print(result)
 	for i in result:
 		if(i in response['body']):
 			return True
@@ -79,7 +78,7 @@ def assignSimple(testData, data):
 			if(check):
 				break
 
-	print("header_req", chk)
+	# print("header_req", chk)
 
 	for i in chk:
 		keyData.remove(i)
@@ -105,7 +104,7 @@ def assignSimple(testData, data):
 	for i in chk:
 		keyData.remove(i)
 	
-	print("body_req", chk)
+	# print("body_req", chk)
 
 	chk = []
 
@@ -125,7 +124,7 @@ def assignSimple(testData, data):
 	for i in chk:
 		keyData.remove(i)
 	
-	print("header_resp", chk)
+	# print("header_resp", chk)
 	
 	chk = []
 
@@ -143,7 +142,7 @@ def assignSimple(testData, data):
 	
 	for i in chk:
 		keyData.remove(i)
-	print("body_resp", chk)
+	# print("body_resp", chk)
 
 	fix = []
 	if(testData["reflected"] == 1) :
@@ -153,7 +152,7 @@ def assignSimple(testData, data):
 				fix.append(j)
 		testData['target'] = fix
 
-	print("reflected", testData['target'])
+	# print("reflected", testData['target'])
 			
 	return testData
 
@@ -184,7 +183,7 @@ def assignDetail(testData, data, url):
 			if(check == False):
 				break
 		
-		print("header_req", data['testCases'])
+		# print("header_req", data['testCases'])
 
 		if(check):
 			for j in testBodyRequest:
@@ -200,7 +199,7 @@ def assignDetail(testData, data, url):
 				if(check == False):
 					break
 		
-		print("body_req", data['testCases'])
+		# print("body_req", data['testCases'])
 
 		if(check):
 			for j in testHeaderResponse:
@@ -213,7 +212,7 @@ def assignDetail(testData, data, url):
 				if(check == False):
 					break
 		
-		print("header_resp", data['testCases'])
+		# print("header_resp", data['testCases'])
 
 		if(check):
 			for j in testBodyResponse:
@@ -223,7 +222,7 @@ def assignDetail(testData, data, url):
 					check = False
 					break
 		
-		print("body_resp", data['testCases'])
+		# print("body_resp", data['testCases'])
 
 		if(check == False):
 			if(testData[i]['reflected'] == 1):
@@ -231,7 +230,7 @@ def assignDetail(testData, data, url):
 				if(resultCheck == False):
 					data['testCases'].remove(i)
 
-		print("reflected", data['testCases'])
+		# print("reflected", data['testCases'])
 
 	return data
 
@@ -252,9 +251,6 @@ def filterTest(data, dataLevel):
 def mapper(data, filePath, reportType, level):
 	f = open("data/wstg.json","r").read()
 	jsonData = json.loads(f)
-	
-	# for i in data:
-	# 	print(i)
 	
 	if(level != 0):
 		dataLevel = open(f"level/level{level}.data","r").read().split("\n") # check list level on main.py
