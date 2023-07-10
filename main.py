@@ -66,38 +66,59 @@ def normalizeURL(url):
 def parseXML(xmlFile, filterUrl = None):
   
     data = {}
-    tree = ET.parse(xmlFile)
-    root = tree.getroot()
+    try:
+    	tree = ET.parse(xmlFile)
+    	root = tree.getroot()
+    except Exception as e:
+    	print("Error : Input file is not valid XML file")
+    	exit()
     count = 0
     
     for item in root:
     	count += 1
-    	url = item.find('url').text
-    	method = item.find('method').text
-    	request = item.find('request').text
-    	response = item.find('response').text
-
-    	url = normalizeURL(url)
-
-    	key = f"{method} {url}"
-
-    	if(filterUrl != None):
-    		if(filterUrl in key):
-    			
+    	try:
+    		url = item.find('url').text
+    		method = item.find('method').text
+    		request = item.find('request').text
+    		response = item.find('response').text
+    		url = normalizeURL(url)
+    		key = f"{method} {url}"
+    		if(filterUrl != None):
+    			if(filterUrl in key):
+	    			data[key] = {}
+    				if(request == None):
+    					request = ""
+    					data[key]['request'] =  {'header' :'', 'body' : ''}
+    				else:
+    					try:
+    						request = base64.b64decode(request).decode()
+    						data[key]['request'] = parseHTTP(request)
+    					except Exception as e:
+    						request = base64.b64decode(request)
+    						data[key]['request'] = parseMultiPart(request)
+    				if(response == None):
+    					response =  ""
+    					data[key]['response'] =  {'header' :'', 'body' : ''}
+    				else:
+    					try:
+    						response = base64.b64decode(response).decode()
+    						data[key]['response'] = parseHTTP(response)
+    					except Exception as e:
+    						response = base64.b64decode(response)
+    						data[key]['response'] = parseFile(response)
+    				data[key]['testCases'] = []
+    		else:
 	    		data[key] = {}
-
     			if(request == None):
     				request = ""
-    				data[key]['request'] =  {'header' :'', 'body' : ''}
+    				data[key]['request'] = ''
     			else:
     				try:
     					request = base64.b64decode(request).decode()
     					data[key]['request'] = parseHTTP(request)
-    					
     				except Exception as e:
     					request = base64.b64decode(request)
     					data[key]['request'] = parseMultiPart(request)
-    	
     			if(response == None):
     				response =  ""
     				data[key]['response'] =  {'header' :'', 'body' : ''}
@@ -109,31 +130,10 @@ def parseXML(xmlFile, filterUrl = None):
     					response = base64.b64decode(response)
     					data[key]['response'] = parseFile(response)
     			data[key]['testCases'] = []
-    	else:
-	    	data[key] = {}
-
-    		if(request == None):
-    			request = ""
-    			data[key]['request'] = ''
-    		else:
-    			try:
-    				request = base64.b64decode(request).decode()
-    				data[key]['request'] = parseHTTP(request)
-    			except Exception as e:
-    				request = base64.b64decode(request)
-    				data[key]['request'] = parseMultiPart(request)
+    	except Exception as e:
+    		print("Error : Input file corrupteed")
+    		exit()
     	
-    		if(response == None):
-    			response =  ""
-    			data[key]['response'] =  {'header' :'', 'body' : ''}
-    		else:
-    			try:
-    				response = base64.b64decode(response).decode()
-    				data[key]['response'] = parseHTTP(response)
-    			except Exception as e:
-    				response = base64.b64decode(response)
-    				data[key]['response'] = parseFile(response)
-    		data[key]['testCases'] = []
     print(f"total traffic : {count}")
     return data
 

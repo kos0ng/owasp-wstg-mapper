@@ -5,24 +5,27 @@ from export import *
 blacklist = [".png", ".jpg", ".jpeg", ".json", ".css", ".js", ".ico", ".woff", ".woff2"]
 
 regexHeader = ["(?i){}[ ]?:([ \'\"\w-]+)", "(?i)[/]({})/([\w-]+)", "(?i)[/]({})$", "(?i)[?&]?({})=([\w-]+)", "(?i)[?&]?([\w-]+)=({})"]
-regexBody = ["(?i)[\"\']{}[\"\'][ ]?:([ \"\w-]+)", "(?i)[\?\&]?({})=([\w-]+)",]
+regexBody = ["(?i)[\"\']{}[\"\'][ ]?:[ ]?[\"\']([ \"\'\w-]+)[\"\']", "(?i)[\"\']([ \"\'\w-]+)[\"\'][ ]?:[ ]?[\"\']{}[\"\']", "(?i)[?&]?({})=([\w-]+)", "(?i)[?&]?([\w-]+)=({})"]
 regexResponse = ["(?i){}[ ]?:([ \'\"\w-]+)"]
-
 
 def checkReflected(request, response):
 	result = []
+	# print(request, response)
+	print(request['body'])
 	for i in regexHeader:
-		tmp = re.findall(i.format("([\w]+)"), request['header'])
+		tmp = re.findall(i.format("([\w]+)"), request['header'].split("\r\n")[0])
 		for j in tmp:
 			val = j[1]
 			if(val not in result):
 				result.append(val)
+	
 	for i in regexBody:
 		tmp = re.findall(i.format("([\w]+)"), request['body'])
 		for j in tmp:
 			val = j[1]
 			if(val not in result):
 				result.append(val)
+	print(result)
 	for i in result:
 		if(i in response['body']):
 			return True
@@ -61,7 +64,6 @@ def assignSimple(testData, data):
 		for i in request['header_regex']:
 			for k in regexHeader:
 				x = re.search(k.format(i), j)
-				# print("header",x, k.format(i),j)
 				if(x is not None):
 					testData['target'].append(j)
 					chk.append(j)
@@ -76,6 +78,8 @@ def assignSimple(testData, data):
 						break
 			if(check):
 				break
+
+	print("header_req", chk)
 
 	for i in chk:
 		keyData.remove(i)
@@ -101,6 +105,8 @@ def assignSimple(testData, data):
 	for i in chk:
 		keyData.remove(i)
 	
+	print("body_req", chk)
+
 	chk = []
 
 	for j in keyData:
@@ -119,12 +125,14 @@ def assignSimple(testData, data):
 	for i in chk:
 		keyData.remove(i)
 	
+	print("header_resp", chk)
+	
 	chk = []
 
 	for j in keyData:
 		check = False
 		for i in response['body_regex']:
-			x = re.search(i, data[j]['response']['header'])
+			x = re.search(i, data[j]['response']['body'])
 			if(x is not None):
 				testData['target'].append(j)
 				chk.append(j)
@@ -135,6 +143,7 @@ def assignSimple(testData, data):
 	
 	for i in chk:
 		keyData.remove(i)
+	print("body_resp", chk)
 
 	fix = []
 	if(testData["reflected"] == 1) :
@@ -143,6 +152,8 @@ def assignSimple(testData, data):
 			if(resultCheck):
 				fix.append(j)
 		testData['target'] = fix
+
+	print("reflected", testData['target'])
 			
 	return testData
 
@@ -172,6 +183,9 @@ def assignDetail(testData, data, url):
 						break
 			if(check == False):
 				break
+		
+		print("header_req", data['testCases'])
+
 		if(check):
 			for j in testBodyRequest:
 				if(j == "*"):
@@ -185,6 +199,9 @@ def assignDetail(testData, data, url):
 						break
 				if(check == False):
 					break
+		
+		print("body_req", data['testCases'])
+
 		if(check):
 			for j in testHeaderResponse:
 				for k in regexResponse:
@@ -195,6 +212,9 @@ def assignDetail(testData, data, url):
 						break
 				if(check == False):
 					break
+		
+		print("header_resp", data['testCases'])
+
 		if(check):
 			for j in testBodyResponse:
 				x = re.search(j, data['response']['body'])
@@ -202,11 +222,17 @@ def assignDetail(testData, data, url):
 					data['testCases'].append(i)
 					check = False
 					break
+		
+		print("body_resp", data['testCases'])
+
 		if(check == False):
 			if(testData[i]['reflected'] == 1):
 				resultCheck = checkReflected(data['request'], data['response'])
 				if(resultCheck == False):
 					data['testCases'].remove(i)
+
+		print("reflected", data['testCases'])
+
 	return data
 
 def getBaseURL(data):

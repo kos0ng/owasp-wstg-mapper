@@ -26,18 +26,10 @@
   <item>
     <time>Mon Jul 10 11:57:15 WIB 2023</time>
     <url><![CDATA[https://www.its.ac.id/search-result/?mssearch=aaaaa&msp=1&mswhere=all]]></url>
-    <host ip="103.94.189.5">www.its.ac.id</host>
-    <port>443</port>
-    <protocol>https</protocol>
     <method><![CDATA[GET]]></method>
-    <path><![CDATA[/search-result/?mssearch=aaaaa&msp=1&mswhere=all]]></path>
     <extension>null</extension>
     <request base64="true"><![CDATA[R0VUIC9zZWFyY2gtcmVzdWx0Lz9tc3NlYXJjaD1hYWFhYSZtc3A9MSZtc3doZXJlPWFsbCBIVFRQLzEuMQ0KSG9zdDogd3d3Lml0cy5hYy5pZA0KQ29va2llOiBwbGxfbGFuZ3VhZ2U9ZW47IF9nYV84Q1A4UFc1WVdSPUdTMS4xLjE2ODg5NjUwMjYuMS4wLjE2ODg5NjUwMjYuMC4wLjA7IF9nYT1HQTEuMy4xODA4NjIzMDMyLjE2ODg5NjUwMjY7IF9naWQ9R0ExLjMuMTI3NjU0NjI4NC4xNjg4OTY1MDI3OyBfZ2F0X2d0YWdfVUFfNDc2MTc2ODZfMT0xOyBwdmNfdmlzaXRzXzFbMF09MTY4OTA1MTQyN2IzMTQ1OQ0KU2VjLUNoLVVhOiANClNlYy1DaC1VYS1Nb2JpbGU6ID8wDQpTZWMtQ2gtVWEtUGxhdGZvcm06ICIiDQpVcGdyYWRlLUluc2VjdXJlLVJlcXVlc3RzOiAxDQpVc2VyLUFnZW50OiBNb3ppbGxhLzUuMCAoV2luZG93cyBOVCAxMC4wOyBXaW42NDsgeDY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvMTE0LjAuNTczNS4xMTAgU2FmYXJpLzUzNy4zNg0KQWNjZXB0OiB0ZXh0L2h0bWwsYXBwbGljYXRpb24veGh0bWwreG1sLGFwcGxpY2F0aW9uL3htbDtxPTAuOSxpbWFnZS9hdmlmLGltYWdlL3dlYnAsaW1hZ2UvYXBuZywqLyo7cT0wLjgsYXBwbGljYXRpb24vc2lnbmVkLWV4Y2hhbmdlO3Y9YjM7cT0wLjcNClNlYy1GZXRjaC1TaXRlOiBzYW1lLW9yaWdpbg0KU2VjLUZldGNoLU1vZGU6IG5hdmlnYXRlDQpTZWMtRmV0Y2gtVXNlcjogPzENClNlYy1GZXRjaC1EZXN0OiBkb2N1bWVudA0KUmVmZXJlcjogaHR0cHM6Ly93d3cuaXRzLmFjLmlkLw0KQWNjZXB0LUVuY29kaW5nOiBnemlwLCBkZWZsYXRlDQpBY2NlcHQtTGFuZ3VhZ2U6IGVuLVVTLGVuO3E9MC45DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=]]></request>
-    <status></status>
-    <responselength></responselength>
-    <mimetype></mimetype>
     <response base64="true"></response>
-    <comment></comment>
   </item>
   <item>
     <time>Mon Jul 10 11:57:11 WIB 2023</time>
